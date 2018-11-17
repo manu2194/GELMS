@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css?family=Krub');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+@import url('https://fonts.googleapis.com/css?family=Lobster|Satisfy');
+
+
+/* !!!! Base styles: !!!! */
+
+.base_body_style {
+  background-image:url('/static/images/background.png');
+  background-size: cover;
+  padding-bottom:20px;
+  padding-top:10%;
+  font-family: PT Sans;
+
+  /*background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);*/
+}
+
+.base_main_window_style {
+  border-radius:5px;
+  padding:20px;
+  margin:10px;
+  background-color:rgb(55, 0, 92);
+  color: rgb(211,211,211);
+}
+
+
+/* Other styles: */
+
+.footer-custom{
+    position: absolute;
+    bottom: 0;
+    left:0;
+    right:0;
+    text-align: center;
+  }
+
+.bg-none{
+background:none;
+outline:none;
+border:none;
+}
+
+.btn-orange{
+    background-color:orange;
+    color:black;
+}
+.btn-orange.active,.btn-orange:focus,.btn-orange:active:focus,.btn-orange:active{
+    background-color:rgb(226, 147, 0);
+    outline:none;
+    box-shadow: none;
+    color:black;
+}
+.btn-orange:hover{
+    background-color:rgb(151,98,0);
+}
+
+/* BUTTON PRIMARY */
+.btn-primary{
+    background-color: rgb(255, 166, 0);
+    color:black;
+    font-weight: bold;
+    border:none;
+    border-radius: 5px;
+
+}
+.btn-primary:hover{
+    background-color: rgb(255, 199, 96);
+    color:black;
+    font-weight: bold;
+
+}
+
+.btn-primary:active,.btn-primary:focus,.btn-primary:active:focus,.btn-primary:visited{
+    background-color: rgb(96, 255, 130) !important;
+    color:black !important;
+    box-shadow: none !important;
+    border:none !important;
+}
+
+.card.login{
+    background-color:rgba(102, 0, 122, 0.603);
+    padding:20px;
+    border-radius: 5px;
+    box-shadow: none;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.13);
+}
+
+/* a{
+    font-size: 0.8em;
+    color: rgb(113, 203, 255);
+}
+a:hover{
+    color: rgb(190, 240, 255);
+} */
+
+.light-blue-link{
+    color: lightblue;
+}
+
+.light-blue-link:hover{
+    color: rgb(255, 255, 255);
+}
+
+.jumbotron{
+background:none;
+color:black;
+text-align: left;
+}
+
+
+.input-transparent{
+    border-radius: 0;
+    border:none;
+    border-bottom: 1px solid white;
+    background: transparent;
+    outline:none;
+    padding-left:0.1em;
+    color:white;
+    transition: border-bottom 0.5s ease;
+}
+.input-transparent:focus{
+    background:transparent;
+    color:white;
+    box-shadow: none;
+    border-bottom: 1px solid orange;
+}
+
+.input-transparent::placeholder{
+    color:rgba(228, 228, 228, 0.774);
+    transition: color 0.1s ease;
+}
+.input-transparent:focus::placeholder{
+    color:transparent;
+}
+
+.input-transparent input:-webkit-autofill {
+    -webkit-text-fill-color: orange !important;
+}
+.input-transparent input:-webkit-autofill {
+
+-webkit-box-shadow: 0 0 0px 1000px rgb(26, 21, 66) inset;
+border: 1px solid rgba(255, 166, 0, 0.342);
+}
+
+.login-box form{
+    margin-top: 20px;
+}
+.sign-up-body{
+    padding:10px;
+}
+/* SIGN UP STYLES */
+
+.card.login.signup{
+
+padding:20px;
+width: 500px;
+margin:0 auto;
+}
+
+
+.heading-link{
+    margin-bottom:1em;
+}
+label{
+    color:white;
+    font-weight:bold;
+}
+
+.custom-control label{
+    color:white;
+    font-weight: normal;
+    cursor: pointer;
+
+}
+
+
+.input-default{
+    background-color: rgb(255, 255, 255);
+    outline:none;
+    border:none;
+    border-radius: 5px;
+    box-shadow: none;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.315);
+}
+.input-default:focus{
+    box-shadow: none;
+
+    box-shadow: 0 0 20px 1px rgb(255, 220, 154);
+
+}
+.sign-up button{
+    margin-top:20px;
+    margin-bottom: 0px;
+}
+
+/* NAVBAR STYLES */
+
+.bg-overlay-fade{
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    background-color: rgba(255, 255, 255, 0.527);
+}
+.dashboard{
+    background:none;
+    position: relative;
+    background-color:#ffd6fd;
+    margin:0px;
+    padding-top:70px;
+    padding-left:20px;
+    padding-right:20px;
+    padding-bottom:50px;
+
+}
+.bg-purple{
+    background-color: rgba(75, 47, 92, 0.842);
+}
+.bg-purple-card a{
+    color:white;
+}
+
+.bg-orange{
+    background-color:orange;
+}
+.text-white{
+    color:white;
+}
+
+.dashboard-card{
+   padding:100px;
+}
+.page-title{
+    width:100%;
+    background-color:darkgrey;
+}
+.card{
+    color:rgb(0, 0, 0);
+}
+.card-link{
+    color:black;
+}
+.navbar{
+    background-color:rgb(55, 0, 92) !important;
+    padding:0;
+    color:white;
+    font-size: 20px;
+    border:none;
+}
+.navbar .navbar-text{
+color: rgb(211,211,211);
+}
+
+.navbar .nav-item{
+padding-left:10px;
+padding-right:10px;
+transition: background-color 0.2s ease;
+}
+.navbar .navbar-nav a{
+   padding-top:15px;
+   padding-bottom:15px;
+   transition: color 0.2s ease;
+   color:rgb(221, 221, 221) !important;
+   /* background-color: red; */
+}
+.navbar .nav-item:hover{
+    background-color:orange;
+    color:rgb(43, 43, 43) !important;
+}
+.navbar .nav-item:active,.navbar .nav-item:focus,.navbar .nav-item:active:focus,.navbar .nav-item:visited{
+    background-color:orange(0, 255, 128);
+
+    color:rgb(43, 43, 43) !important;
+}
+.navbar .navbar-nav a:hover{
+
+    color:rgb(43, 43, 43) !important;
+}
+
+@media (max-width: 600px) {
+    .card.login.signup {
+        padding:10px;
+      width:100%;
+      margin:0;
+    }
+    .sign-up-body{
+        padding:4px;
+    }
+    .container.sign-up{
+        padding:0;
+    }
+  }

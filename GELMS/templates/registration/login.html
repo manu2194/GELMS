@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+
+  <div class="container">
+    <div class="row">
+
+<!-- Login textbox: -->
+      <div class="col-md-6">
+        <div class="login-box">
+          <div class='card login'>
+            <h3 class="font-weight-bold text-light">Login</h3>
+            <form method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+<!-- GELMS description textbox: -->
+      <div class="col-md-6">
+        <div class="jumbotron">
+          <h3 class="text-weight-bold">GELMS</h3>
+          <p class="lead">GELMS or Generic Electronic Learning Management System is an online LMS created with human users in mind, whether you are a student seeking an organized view of your course syllabus, assignments and grades or whether you are an instructor looking to set those. </p>
+        </div>
+      </div>
+
+  </div>
+</div>
+
+{% endblock %}

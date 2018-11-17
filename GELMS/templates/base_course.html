@@ -1,0 +1,25 @@
+{% extends 'base_dash.html' %}
+{% block title %}Course{% endblock %}
+{% block content_dash %}
+
+    {{course.name}}
+
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'announcements' %}">Announcements</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'syllabus' %}">Syllabus</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'people' %}">People</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'tools' %}">Tools</a>
+      </li>
+    </ul>
+
+  {% block content_course %}
+  {% endblock %}
+
+{% endblock %}

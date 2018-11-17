@@ -1,0 +1,17 @@
+{% extends 'base_dash.html' %}
+{% block title %}Courses{% endblock %}
+{% block content_dash %}
+
+      <ul class="navbar-nav">
+        {% for course in course_list %}
+          {% for person in course.people.all %}
+            {% if person.id == user.id %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'announcements' %}">{{ course.name }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </ul>
+
+{% endblock %}
