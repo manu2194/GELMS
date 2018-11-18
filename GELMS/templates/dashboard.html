@@ -1,7 +1,11 @@
 {% extends 'base_dash.html' %}
 {% block title %}Dashboard{% endblock %}
 {% block content_dash %}
-
+<div class="container-fluid m-0">
+<div style="margin-top:70px">
+<div class="card rounded border-0 shadow">
+<div class="card-header">Dashboard</div>
+<div class="card-body">
     <ul>
       <li>Name: {{ user.get_full_name }}</li>
       <li>UID: {{ user.custom_user.uid }}</li>
@@ -11,5 +15,8 @@
         <li>Status: Teacher/Grader</li>
       {% endif %}
     </ul>
-
+    </div>
+    </div>
+</div>
+</div>
 {% endblock %}

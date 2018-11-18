@@ -1,17 +1,20 @@
 {% extends 'base_dash.html' %}
 {% block title %}Courses{% endblock %}
 {% block content_dash %}
-
-      <ul class="navbar-nav">
+<div class="container-fluid m-0">
+<div style="margin-top:70px">
+<div class="card-columns">
+   
         {% for course in course_list %}
           {% for person in course.people.all %}
             {% if person.id == user.id %}
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'announcements' %}">{{ course.name }}</a>
-              </li>
+            <div class="card p-3">
+                <a class="card-link" href="{% url 'announcements' %}">{{ course.name }}</a>
+              </div>
             {% endif %}
           {% endfor %}
         {% endfor %}
-      </ul>
-
+</div>
+</div>
+</div>
 {% endblock %}

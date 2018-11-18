@@ -5,8 +5,9 @@
   {% if user.is_authenticated %}
 
   <!-- Navbar: -->
-  <nav class="navbar fixed-top navbar-expand-sm navbar-light">
-    <span class="navbar-text" style="font-weight:bold;margin-right:20px;">G E L M S </span>
+  <div>
+  <nav class="navbar bg-purple fixed-top navbar-expand-sm navbar-dark shadow">
+    <span class="navbar-text ml-2" style="font-weight:bold;margin-right:20px;">G E L M S </span>
     <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -29,11 +30,12 @@
       </ul>
     </div>
   </nav>
+  </div>
 
-  <div class="base_main_window_style">
+  
     {% block content_dash %}
     {% endblock %}
-  </div>
+ 
 
   {% else %}
     <meta http-equiv="REFRESH" content="0;{% url 'login' %}">

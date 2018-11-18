@@ -3,7 +3,7 @@
 {% block content %}
 
   <div class="container">
-    <div class="row">
+    <div class="row mt-5">
 
 <!-- Login textbox: -->
       <div class="col-md-6">
@@ -12,8 +12,20 @@
             <h3 class="font-weight-bold text-light">Login</h3>
             <form method="post">
               {% csrf_token %}
-              {{ form.as_p }}
-              <button type="submit">Login</button>
+              {%if form.errors%}
+							<div class="text-light small bg-danger p-1 ml-0 mb-2 rounded shadow-sm">
+								{{form.error_messages.invalid_login}}
+							</div>{%endif%}
+              <div class="form-group">
+								<label class="login-form" for="email">Username</label><br> 
+                {{form.username}}
+							</div>
+							<div class="form-group">
+								<label class="login-form" for="password">Password</label><br> 
+                {{form.password}}
+							</div>
+              <button type="submit" class="btn btn-primary btn-block"  style="margin-top:45px;margin-bottom:10px;">Login</button>
+              <a class="text-danger font-weight-bold bg-dark p-1 pl-3 pr-3 mt-2 mb-2 rounded" href="{%url "admin:index" %}">Admin Login</a>
             </form>
           </div>
         </div>

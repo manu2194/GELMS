@@ -6,22 +6,26 @@
 /* !!!! Base styles: !!!! */
 
 .base_body_style {
-  background-image:url('/static/images/background.png');
+  /* background-image:url('/static/images/background.jpg'); */
+background: #EECDA3;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #EF629F, #EECDA3);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #EF629F, #EECDA3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   background-size: cover;
   padding-bottom:20px;
-  padding-top:10%;
+  /* padding-top:8%; */
   font-family: PT Sans;
 
   /*background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);*/
 }
 
-.base_main_window_style {
+/* .base_main_window_style {
   border-radius:5px;
   padding:20px;
   margin:10px;
   background-color:rgb(55, 0, 92);
   color: rgb(211,211,211);
-}
+} */
 
 
 /* Other styles: */
@@ -108,7 +112,7 @@ text-align: left;
 }
 
 
-.input-transparent{
+.login-box input{
     border-radius: 0;
     border:none;
     border-bottom: 1px solid white;
@@ -116,27 +120,28 @@ text-align: left;
     outline:none;
     padding-left:0.1em;
     color:white;
+    width: 100%;
     transition: border-bottom 0.5s ease;
 }
-.input-transparent:focus{
+.login-box input:focus{
     background:transparent;
     color:white;
     box-shadow: none;
     border-bottom: 1px solid orange;
 }
 
-.input-transparent::placeholder{
+.login-box input::placeholder{
     color:rgba(228, 228, 228, 0.774);
     transition: color 0.1s ease;
 }
-.input-transparent:focus::placeholder{
+.login-box input:focus::placeholder{
     color:transparent;
 }
 
-.input-transparent input:-webkit-autofill {
+.login-box input input:-webkit-autofill {
     -webkit-text-fill-color: orange !important;
 }
-.input-transparent input:-webkit-autofill {
+.login-box input input:-webkit-autofill {
 
 -webkit-box-shadow: 0 0 0px 1000px rgb(26, 21, 66) inset;
 border: 1px solid rgba(255, 166, 0, 0.342);
@@ -235,49 +240,50 @@ label{
     width:100%;
     background-color:darkgrey;
 }
-.card{
-    color:rgb(0, 0, 0);
-}
+
 .card-link{
     color:black;
 }
-.navbar{
+.navbar-purple{
     background-color:rgb(55, 0, 92) !important;
     padding:0;
     color:white;
     font-size: 20px;
     border:none;
 }
-.navbar .navbar-text{
+.navbar-purple .navbar-text{
 color: rgb(211,211,211);
 }
 
-.navbar .nav-item{
+.navbar-purple .nav-item{
 padding-left:10px;
 padding-right:10px;
 transition: background-color 0.2s ease;
 }
-.navbar .navbar-nav a{
+.navbar-purple .navbar-nav a{
    padding-top:15px;
    padding-bottom:15px;
    transition: color 0.2s ease;
    color:rgb(221, 221, 221) !important;
    /* background-color: red; */
 }
-.navbar .nav-item:hover{
+.navbar-purple .nav-item:hover{
     background-color:orange;
     color:rgb(43, 43, 43) !important;
 }
-.navbar .nav-item:active,.navbar .nav-item:focus,.navbar .nav-item:active:focus,.navbar .nav-item:visited{
+.navbar-purple .nav-item:active,.navbar .nav-item:focus,.navbar .nav-item:active:focus,.navbar .nav-item:visited{
     background-color:orange(0, 255, 128);
 
     color:rgb(43, 43, 43) !important;
 }
-.navbar .navbar-nav a:hover{
+.navbar-purple .navbar-nav a:hover{
 
     color:rgb(43, 43, 43) !important;
 }
 
+.border-purple{
+    border: 1px solid purple;
+}
 @media (max-width: 600px) {
     .card.login.signup {
         padding:10px;
