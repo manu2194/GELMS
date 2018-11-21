@@ -11,9 +11,3 @@ class CourseView(generic.ListView):
 
     def get_queryset(self):
         return Course.objects.all()
-
-
-
-def myview(request):
-    if request.user.is_authenticated==False:
-        return HttpResponseRedirect("login/")

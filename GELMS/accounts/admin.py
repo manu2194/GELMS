@@ -38,7 +38,6 @@ class CustomUserAdmin(BaseUserAdmin):
 
 
 
-
 # Registrations:
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)

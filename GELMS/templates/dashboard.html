@@ -9,11 +9,7 @@
     <ul>
       <li>Name: {{ user.get_full_name }}</li>
       <li>UID: {{ user.custom_user.uid }}</li>
-      {% if user.custom_user.status == 'Student' %}
-        <li>Status: Student</li>
-      {% else %}
-        <li>Status: Teacher/Grader</li>
-      {% endif %}
+      <li>Status: {{user.custom_user.status}}</li>
     </ul>
     </div>
     </div>
