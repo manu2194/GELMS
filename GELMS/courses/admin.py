@@ -3,7 +3,7 @@ from courses.models import Course
 
 
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ('name','domain',)
+    list_display = ('name','title','domain',)
     filter_horizontal = ('students','graders','teachers')
 
 
