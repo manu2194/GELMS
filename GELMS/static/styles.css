@@ -1,20 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Krub');
 @import url('https://fonts.googleapis.com/css?family=PT+Sans');
 @import url('https://fonts.googleapis.com/css?family=Lobster|Satisfy');
-
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+@import url('https://fonts.googleapis.com/css?family=Niramit');
+@import url('https://fonts.googleapis.com/css?family=Sedgwick+Ave');
 
 /* !!!! Base styles: !!!! */
 
 .base_body_style {
   /* background-image:url('/static/images/background.jpg'); */
-background: #EECDA3;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #EF629F, #EECDA3);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #EF629F, #EECDA3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #FFEEEE;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, rgb(237, 233, 238), #FFEEEE);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, rgb(237, 233, 238), #FFEEEE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
 
   background-size: cover;
   padding-bottom:20px;
   /* padding-top:8%; */
-  font-family: PT Sans;
+  font-family: 'Niramit', sans-serif;
 
   /*background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);*/
 }
@@ -30,13 +33,7 @@ background: linear-gradient(to right, #EF629F, #EECDA3); /* W3C, IE 10+/ Edge, F
 
 /* Other styles: */
 
-.footer-custom{
-    position: absolute;
-    bottom: 0;
-    left:0;
-    right:0;
-    text-align: center;
-  }
+
 
 .bg-none{
 background:none;
@@ -89,21 +86,6 @@ border:none;
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.13);
 }
 
-/* a{
-    font-size: 0.8em;
-    color: rgb(113, 203, 255);
-}
-a:hover{
-    color: rgb(190, 240, 255);
-} */
-
-.light-blue-link{
-    color: lightblue;
-}
-
-.light-blue-link:hover{
-    color: rgb(255, 255, 255);
-}
 
 .jumbotron{
 background:none;
@@ -150,18 +132,6 @@ border: 1px solid rgba(255, 166, 0, 0.342);
 .login-box form{
     margin-top: 20px;
 }
-.sign-up-body{
-    padding:10px;
-}
-/* SIGN UP STYLES */
-
-.card.login.signup{
-
-padding:20px;
-width: 500px;
-margin:0 auto;
-}
-
 
 .heading-link{
     margin-bottom:1em;
@@ -177,7 +147,6 @@ label{
     cursor: pointer;
 
 }
-
 
 .input-default{
     background-color: rgb(255, 255, 255);
@@ -220,12 +189,15 @@ label{
 
 }
 .bg-purple{
-    background-color: rgba(75, 47, 92, 0.842);
+    background-color: rgb(75, 47, 92);
 }
 .bg-purple-card a{
     color:white;
 }
 
+.bg-purple-dark{
+    background-color: rgb(50, 29, 63);
+}
 .bg-orange{
     background-color:orange;
 }
@@ -281,8 +253,23 @@ transition: background-color 0.2s ease;
     color:rgb(43, 43, 43) !important;
 }
 
+.navbar .navbar-nav a{
+    transition: color 0.5s ease;
+}
+.navbar .navbar-nav a:hover{
+    color:orange !important;
+    text-decoration: underline;
+}
+
 .border-purple{
     border: 1px solid purple;
+}
+
+.card-course{
+    transition: background 0.2s ease;
+}
+.card-course:hover{
+    background: orange;
 }
 @media (max-width: 600px) {
     .card.login.signup {

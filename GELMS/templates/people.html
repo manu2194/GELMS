@@ -2,19 +2,42 @@
 {% block title %}Announcements{% endblock %}
 {% block content_course %}
 
-  </br> Teachers: </br>
+<div class="card rounded border-0 shadow mt-1">
+  <div class="card-header p-2">
+  Teachers:</div>
+  <div class="card-body p-2">
+  <ul>
   {% for person in course.get_teachers %}
-    {{person.user.get_full_name}}</br>
+  <li>{{person.user.get_full_name}}</li>
   {% endfor %}
-
-  </br> Graders: </br>
+  </ul>
+  </div>
+</div>
+{%if course.get_graders%}
+<div class="card rounded border-0 shadow mt-1">
+  <div class="card-header p-2">
+  Graders:</div>
+  <div class="card-body p-2">
+  <ul>
   {% for person in course.get_graders %}
-    {{person.user.get_full_name}}</br>
+    <li>{{person.user.get_full_name}}</li>
   {% endfor %}
+  </ul>
+  </div>
+</div>
+{%endif%}
 
-  </br> Students: </br>
+
+<div class="card rounded border-0 shadow mt-1">
+  <div class="card-header p-2">
+  Students:</div>
+  <div class="card-body p-2">
+  <ul>
   {% for person in course.get_students %}
-    {{person.user.get_full_name}}</br>
+    <li>{{person.user.get_full_name}}</li>
   {% endfor %}
+  </ul>
+  </div>
+</div>
 
 {% endblock %}

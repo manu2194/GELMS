@@ -3,8 +3,11 @@
 {% block content_dash %}
 <div class="container-fluid m-0">
 <div style="margin-top:70px">
+
+<h2 class="ml-2 mt-2">Welcome, <strong>{{user.get_short_name}}</strong></h2>
 <div class="card rounded border-0 shadow">
-<div class="card-header">Dashboard</div>
+
+<div class="card-header">User details</div>
 <div class="card-body">
     <ul>
       <li>Name: {{ user.get_full_name }}</li>

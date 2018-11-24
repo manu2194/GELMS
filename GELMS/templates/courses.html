@@ -7,7 +7,7 @@
 
 
         {% for course in user.custom_user.user_courses %}
-          <div class="card p-3">
+          <div class="card-course card p-2">
             <a class="card-link" href="{% url 'announcements' course.name %}">{{ course.name }}</a>
           </div>
         {% endfor %}
