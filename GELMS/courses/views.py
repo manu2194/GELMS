@@ -3,11 +3,13 @@ from django.views import generic
 from .models import Course
 from django.http import HttpResponseRedirect
 
+
 # Create your views here.
 class CourseView(generic.ListView):
 
-    model = Course
-    template_name='courses.html'
+    def user_courses(request):
+        return render(request, 'courses.html')
+
 
     def get_queryset(self):
         return Course.objects.all()

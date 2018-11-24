@@ -2,6 +2,19 @@
 {% block title %}Announcements{% endblock %}
 {% block content_course %}
 
-  People coming soon...
+  </br> Teachers: </br>
+  {% for person in course.get_teachers %}
+    {{person.user.get_full_name}}</br>
+  {% endfor %}
+
+  </br> Graders: </br>
+  {% for person in course.get_graders %}
+    {{person.user.get_full_name}}</br>
+  {% endfor %}
+
+  </br> Students: </br>
+  {% for person in course.get_students %}
+    {{person.user.get_full_name}}</br>
+  {% endfor %}
 
 {% endblock %}

@@ -2,8 +2,13 @@
 {% block title %}Announcements{% endblock %}
 {% block content_course %}
 
-  Welcome to {{course.name}} </br></br>
-
-  Announcements coming soon...
+  </br> Announcements: </br>
+  {% if course.course_announcements.all %}
+    {% for announcement in course.course_announcements.all %}
+      {{announcement.content}}</br>
+    {% endfor %}
+  {% else %}
+    No new announcements.
+  {% endif %}
 
 {% endblock %}

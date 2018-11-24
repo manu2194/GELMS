@@ -3,7 +3,8 @@ from courses.models import Course
 
 
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ('name','cid',)
-    filter_horizontal = ('students','grader','teacher')
+    list_display = ('name','domain',)
+    filter_horizontal = ('students','graders','teachers')
+
 
 admin.site.register(Course, CourseAdmin)

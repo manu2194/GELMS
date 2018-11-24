@@ -27,6 +27,8 @@ class CustomUserAdmin(BaseUserAdmin):
         )
 
     list_display = ('email', 'get_uid', 'get_status',)
+    list_filter = ('custom_user__status',)
+    ordering = ()
 
     def get_uid(self, instance):
         return instance.custom_user.uid
@@ -35,6 +37,11 @@ class CustomUserAdmin(BaseUserAdmin):
     def get_status(self, instance):
         return instance.custom_user.status
     get_status.short_description = 'Status'
+
+    def get_queryset(self, request):
+        qs = super(CustomUserAdmin, self).get_queryset(request)
+        return qs.filter(is_superuser=False)
+
 
 
 

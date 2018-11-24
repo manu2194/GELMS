@@ -13,23 +13,26 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from announcements.views import AnnouncementView
+from courses.views import CourseView
+from dashboard.views import DashboardView
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import TemplateView
-from courses.views import CourseView
-from announcements.views import AnnouncementView
+from people.views import PeopleView
+from settings.views import SettingsView
+from syllabus.views import SyllabusView
+from tools.views import ToolsView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', DashboardView.user_dashboard, name='home'),
     path('accounts/', include('django.contrib.auth.urls')),
-    #path('courses/', TemplateView.as_view(template_name='courses.html'), name='courses'),
-    path('dashboard/', TemplateView.as_view(template_name='dashboard.html'), name='dashboard'),
-    path('settings/', TemplateView.as_view(template_name='settings.html'), name='settings'),
-    #path('announcements/', TemplateView.as_view(template_name='announcements.html'), name='announcements'),
-    path('syllabus/', TemplateView.as_view(template_name='syllabus.html'), name='syllabus'),
-    path('people/', TemplateView.as_view(template_name='people.html'), name='people'),
-    path('tools/', TemplateView.as_view(template_name='tools.html'), name='tools'),
-    path('', TemplateView.as_view(template_name='dashboard.html'), name='home'),
-    path('courses/', CourseView.as_view(), name = 'courses'),
-    path('announcements/', AnnouncementView.as_view(), name = 'announcements'),
+    path('admin/', admin.site.urls),
+    path('courses/', CourseView.user_courses, name = 'courses'),
+    path('dashboard/', DashboardView.user_dashboard, name = 'dashboard'),
+    path('settings/', SettingsView.user_settings, name='settings'),
+    path('<course_name>/announcements', AnnouncementView.course_announcements, name = 'announcements'),
+    path('<course_name>/syllabus/', SyllabusView.course_syllabus, name='syllabus'),
+    path('<course_name>/people/', PeopleView.course_people, name='people'),
+    path('<course_name>/tools/', ToolsView.course_tools, name='tools'),
 ]
