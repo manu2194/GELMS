@@ -4,8 +4,8 @@ from accounts.models import CustomUser
 
 # Create your models here.
 class Course(models.Model):
-    name = models.CharField(max_length=7, unique=True)
-    title = models.CharField(max_length=200)
+    name = models.CharField(max_length=7, unique=True, help_text='e.g. ENPM613')
+    title = models.CharField(max_length=200, help_text='e.g. Software Design and Implementation')
     DOMAIN_CHOICES = (
         ('Art', 'Art'),
         ('Computer Science', 'Computer Science'),
