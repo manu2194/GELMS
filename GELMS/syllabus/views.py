@@ -16,9 +16,10 @@ class SyllabusView(generic.View):
     
     @csrf_exempt
     def course_syllabus(request, course_name):
-        course_ob = get_object_or_404(Course, name=course_name)
-        syllabus_edit = get_object_or_404(Syllabus, course=course_ob)
+        
         if request.method == "POST":
+            course_ob = get_object_or_404(Course, name=course_name)
+            syllabus_edit = get_object_or_404(Syllabus, course=course_ob)
             try:
                 form = SyllabusForm(request.POST)
                 #print(form)
