@@ -1,0 +1,84 @@
+{% extends 'base_course.html' %}
+{% block title %}Announcements{% endblock %}
+{% block content_course %}
+
+<div class="card">
+<div class="card-header">
+<h3 class="mt-2 ml-2">Announcements for {{course.name}}</h3>
+</div>
+<div class="card-body">
+{% if course.course_announcements.all%}
+
+
+  <table class="table table-striped table-bordered shadow">
+    <thead class="thead-dark">
+      <tr>
+       
+       <th scope = "col md-2">Content</th>
+       <th scope = "col md-6">Published date</th>
+       {% if user.custom_user.status == 'Teacher'%}
+       <th scope = "col md-2">Actions</th>
+       {% endif %}
+      </tr>
+    </thead>
+    </tbody>
+    
+    {% for announcement in course.course_announcements.all%}
+      <tr>
+        <td>{{announcement.content}}</td>
+        <td>{{announcement.publish_date}}</td>
+        {% if user.custom_user.status == 'Teacher'%}
+        <td><a href="{% url 'announcement_edit' course.name announcement.id %}" class="text-primary mr-2">Edit</a>|<a href="{% url 'announcement_delete' course.name announcement.id %}" class="text-danger ml-2">Delete</a>
+        {% endif %}
+      </tr>
+      {% endfor %}
+      
+    </tbody>
+    </table>
+
+   {% else %}
+   
+      <text class="text-danger ml-2">No Announcements found</text>
+    {% endif %}
+</div>
+
+  <!--Syllabus Add-->
+    {% if user.custom_user.status == 'Teacher'%}
+    <div class="card-footer">
+  
+  Add Announcement
+  
+  
+    <form class="ml-2" method="POST">
+      <div class="input-group">
+      
+        {{form.content}}
+        <div class="input-group-append">
+        {{form.publish_date}}
+        </div>
+        <div class="input-group-append">
+          <button class="btn btn-orange" type="submit">Submit</button> 
+        </div>
+      </div>
+    </form>   
+
+</div>
+</div>
+{% endif %} 
+
+ {% comment %} </br> Syllabus for {{course.name}} </br>
+  {% if course.course_syllabus.all %}
+    {% for syllabus in course.course_syllabus.all %}
+      {{syllabus.content}}</br>
+    {% endfor %}
+  {% else %}
+    No syllabus
+  {% endif %} {% endcomment %}
+<script>
+    $(function () {
+        $('.datetime-input').datetimepicker({
+            format:'YYYY-MM-DD HH:mm:ss'
+        });
+    });
+</script>
+{% endblock %}

@@ -1,11 +1,11 @@
 {% extends 'base_course.html' %}
-{% block title %}Syllabus Edit{% endblock %}
+{% block title %}Announcement Edit{% endblock %}
 {% block content_course %}
 
 
 <div class="card">
 <div class="card-header">
-Edit syllabus item:<strong>{{syllabus.content}}</strong>
+Edit syllabus item:<strong>{{announcement.content}}</strong>
 </div>
 <div class="card-body">
 <form class="ml-2" method="POST">
@@ -17,7 +17,7 @@ Edit syllabus item:<strong>{{syllabus.content}}</strong>
           <button class="btn btn-success" type="submit">Save</button> 
         </div>
         <div class="input-group-append">
-          <a class="btn btn-danger ml-2" href="{% url 'syllabus' course.name %}">Cancel</a>
+          <a class="btn btn-danger ml-2" href="{% url 'announcements' course.name %}">Cancel</a>
         </div>
       </div>
     </form>

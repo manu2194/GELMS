@@ -1,10 +1,12 @@
 {% extends 'base_course.html' %}
-{% block title %}Announcements{% endblock %}
+{% block title %}Syllabus{% endblock %}
 {% block content_course %}
 
-
+<div class="card">
+<div class="card-header">
 <h3 class="mt-2 ml-2">Syllabus for {{course.name}}</h3>
-
+</div>
+<div class="card-body">
 {% if course.course_syllabus.all%}
 
 
@@ -12,8 +14,8 @@
     <thead class="thead-dark">
       <tr>
        
-       <th scope = "col md-2">Published on</th>
-       <th scope = "col md-6">Item</th>
+       <th scope = "col md-2">Content</th>
+       <th scope = "col md-6">Date</th>
        {% if user.custom_user.status == 'Teacher'%}
        <th scope = "col md-2">Actions</th>
        {% endif %}
@@ -38,12 +40,16 @@
    
       <text class="text-danger ml-2">NO SYLLABUS FOUND</text>
     {% endif %}
+</div>
 
   <!--Syllabus Add-->
     {% if user.custom_user.status == 'Teacher'%}
-  <div class="mt-2">
+    <div class="card-footer">
+  
+  Add Syllabus
+  
+  
     <form class="ml-2" method="POST">
-      <h5>Add Syllabus</h5>
       <div class="input-group">
       
         {{form.content}}
@@ -55,6 +61,8 @@
         </div>
       </div>
     </form>   
+
+</div>
 </div>
 {% endif %} 
 

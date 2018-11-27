@@ -29,6 +29,7 @@ class SyllabusView(generic.View):
                     syllabus.course = course_ob
                     syllabus.publish_date = datetime.now()
                     syllabus.save()
+                    form = SyllabusForm()
             except:
                 form = SyllabusForm(request.POST, instance = syllabus_edit)
                 if form.is_valid():
@@ -56,12 +57,19 @@ class SyllabusView(generic.View):
 
     @csrf_exempt
     def syllabus_edit(request,course_name,syllabus_id):
-
-        if request.method == "GET":
+        if request.method == "POST":
             course = get_object_or_404(Course, name=course_name)
-            return render(request, 'syllabus_edit.html',{'course':course})
-
-        elif request.method == "POST":
-            course = get_object_or_404(Course, name=course_name)
-            if request.POST.get("syllabus_edit_cancel"):
+            syllabus_edit = get_object_or_404(Syllabus, id = syllabus_id)
+            form = SyllabusForm(request.POST, instance = syllabus_edit)
+            if form.is_valid():
+                syllabus_edit = form.save(commit=False)
+                syllabus_edit.publish_date = datetime.now()
+                syllabus_edit.save()
                 return redirect("syllabus",course_name)
+        else:
+            form = SyllabusForm()
+
+        form.fields['content'].widget.attrs = {'class':'form-control'}
+        course = get_object_or_404(Course, name=course_name)
+        syllabus = get_object_or_404(Syllabus, id = syllabus_id)
+        return render(request, 'syllabus_edit.html',{'course':course,'syllabus':syllabus,'form':form})

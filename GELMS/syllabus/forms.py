@@ -8,4 +8,11 @@ class SyllabusForm(forms.ModelForm):
         model = Syllabus
         fields = ("content",)
 
+class SyllabusEditForm(forms.ModelForm):
+
+    
+    class Meta:
+        model = Syllabus
+        fields = ("content",)
+
         
