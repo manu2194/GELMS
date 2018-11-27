@@ -12,10 +12,6 @@
     </button>
     <div class="collapse navbar-collapse" id="collapse_target_course">
       <ul class="navbar-nav">
-        {% comment %} <li class="nav-item ml-3">
-          <a class="nav-link">{{course.name}}: {{course.title}}</a>
-        </li> {% endcomment %}
-        
         <li class="nav-item ml-2">
           <a class="nav-link" href="{% url 'announcements' course.name %}">Announcements</a>
         </li>

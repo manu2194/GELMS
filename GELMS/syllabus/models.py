@@ -7,7 +7,7 @@ import datetime
 # Create your models here.
 class Syllabus(models.Model):
     content = models.CharField(max_length=500)
-    course = models.ForeignKey(Course, related_name='course_syllabus', blank=True, on_delete=models.CASCADE,default="0")
+    course = models.ForeignKey(Course, related_name='course_syllabus', blank=True, on_delete=models.CASCADE)
     publish_date = models.DateTimeField(blank=True,null=True)
 
     def __str__(self):

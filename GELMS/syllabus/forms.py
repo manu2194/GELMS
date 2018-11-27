@@ -7,4 +7,5 @@ class SyllabusForm(forms.ModelForm):
     class Meta:
         model = Syllabus
         fields = ("content",)
+
         
