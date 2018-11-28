@@ -1,9 +1,45 @@
 {% extends 'base_dash.html' %}
 {% block title %}Settings{% endblock %}
 {% block content_dash %}
+
 <div class="container-fluid m-0">
-<div style="margin-top:70px">
-  Settings will be added soon...
+  <div style="margin-top:70px">
+
+
+    <!-- Change Password -->
+    </div>
+      Change Password:
+      <form method="post">
+        {% csrf_token %}
+        Old password: {{ form.old_password }} </br>
+        New password: {{ form.new_password1 }} </br>
+        Confirm new password: {{ form.new_password2 }} </br>
+        <button type="submit">Save changes</button>
+      </form>
+
+      {% if messages %}
+        <div class="messages">
+          {% for message in messages %}
+            <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }} </p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+
+    <!-- Reader Mode -->
+    <div>
+      Reader Mode:
+    </div>
+
+
+    <!-- Multifactor Authentication -->
+    <div>
+      Multifactor Authentication:
+    </div>
+
+
+  </div>
 </div>
-</div>
+
 {% endblock %}

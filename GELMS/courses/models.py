@@ -36,3 +36,9 @@ class Course(models.Model):
 
     def people(self):
         return self.students.all() | self.grader.all() | self.teacher.all()
+
+    def get_syllabus(self):
+        return self.course_syllabus.order_by('due_date')
+
+    def get_announcements(self):
+        return self.course_announcements.order_by('-publish_date')

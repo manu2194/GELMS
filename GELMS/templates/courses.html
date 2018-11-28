@@ -6,7 +6,7 @@
       <div class="card-columns">
 
 
-        {% for course in user.custom_user.user_courses %}
+        {% for course in user.custom_user.get_user_courses %}
           <div class="card-course card p-2">
             <a class="card-link" href="{% url 'announcements' course.name %}">{{ course.name }}</a>
           </div>

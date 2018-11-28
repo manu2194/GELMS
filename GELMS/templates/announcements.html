@@ -2,13 +2,81 @@
 {% block title %}Announcements{% endblock %}
 {% block content_course %}
 
-  </br> Announcements: </br>
-  {% if course.course_announcements.all %}
-    {% for announcement in course.course_announcements.all %}
-      {{announcement.content}}</br>
-    {% endfor %}
+
+<!-- Force Redirect -->
+{% if user_is_registered %}
+{% else %}
+  <meta http-equiv="REFRESH" content="0;{% url 'courses' %}">
+{% endif %}
+
+
+<!-- Page Heading -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="mt-2 ml-2">Announcements for {{course.name}}</h3>
+  </div>
+
+
+<!-- Display Announcements -->
+  <div class="card-body">
+  {% if course.course_announcements.all%}
+    <table class="table table-striped table-bordered shadow">
+      <thead class="thead-dark">
+        <tr>
+          <th scope = "col md-2">Publisher</th>
+          <th scope = "col md-2">Content</th>
+          <th scope = "col md-6">Published date</th>
+          {% if user.custom_user.status == 'Teacher'%}
+          <th scope = "col md-2">Actions</th>
+          {% endif %}
+        </tr>
+      </thead>
+        </tbody>
+        {% for announcement in course.get_announcements%}
+          <tr>
+            <td>{{announcement.publisher}}</td>
+            <td>{{announcement.content}}</td>
+            <td>{{announcement.publish_date}}</td>
+            {% if user.custom_user.status == 'Teacher'%}
+            <td><a href="{% url 'announcement_edit' course.name announcement.id %}" class="text-primary mr-2">Edit</a>|<a href="{% url 'announcement_delete' course.name announcement.id %}" class="text-danger ml-2">Delete</a>
+            {% endif %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
   {% else %}
-    No new announcements.
+    <text class="text-danger ml-2">No new announcements. </text>
   {% endif %}
+  </div>
+
+
+<!-- Add Announcements -->
+  {% if user.custom_user.status == 'Teacher'%}
+    <div class="card-footer">
+      Add new announcement:
+      <form class="ml-2" method="POST">
+        <div class="input-group">
+        {{form.content}}
+          <div class="input-group-append">
+          {{form.publish_date}}
+          </div>
+          <div class="input-group-append">
+            <button class="btn btn-orange" type="submit">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  {% endif %}
+</div>
+
+
+<!-- date script -->
+<script>
+  $(function () {
+    $('.datetime-input').datetimepicker({
+        format:'YYYY-MM-DD HH:mm:ss'
+      });
+    });
+</script>
 
 {% endblock %}

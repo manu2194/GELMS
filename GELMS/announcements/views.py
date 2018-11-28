@@ -13,21 +13,19 @@ from .models import Announcement
 # Create your views here.
 
 class AnnouncementView(generic.View):
-    
+
     @csrf_exempt
     def course_announcements(request, course_name):
-        
+
         if request.method == "POST":
             course_ob = get_object_or_404(Course, name=course_name)
-            #syllabus_edit = get_object_or_404(Syllabus, course=course_ob)
             try:
                 form = AnnouncementForm(request.POST)
-                #print(form)
                 if form.is_valid():
-                    
                     announcement = form.save(commit=False)
                     announcement.course = course_ob
                     announcement.publish_date = datetime.now()
+                    announcement.publisher = request.user.first_name + " " + request.user.last_name
                     announcement.save()
                     form = AnnouncementForm()
             except:
@@ -42,16 +40,24 @@ class AnnouncementView(generic.View):
 
         form.fields['content'].widget.attrs = {'class':'form-control'}
         course = get_object_or_404(Course, name=course_name)
-        # syllabus = get_object_or_404(Syllabus,course_id=course.id)
-        # print(syllabus.content)
-        return render(request, 'announcements_temp.html', {'course': course,'form':form})
 
-    
+        def user_is_registered(course=course):
+            if course.teachers.filter(uid=request.user.custom_user.uid):
+                return True
+            if course.graders.filter(uid=request.user.custom_user.uid):
+                return True
+            if course.students.filter(uid=request.user.custom_user.uid):
+                return True
+            return False
+
+        return render(request, 'announcements.html', {'course': course,'form':form, 'user_is_registered':user_is_registered})
+
+
     def get_queryset(self):
         return Announcement.objects.all()
 
     def announcement_delete(request,course_name,announcement_id):
-        course = get_object_or_404(Course, name=course_name) 
+        course = get_object_or_404(Course, name=course_name)
         announcement = get_object_or_404(Announcement,course= course,id=announcement_id).delete()
         return redirect("announcements",course_name)
 
@@ -72,23 +78,10 @@ class AnnouncementView(generic.View):
         form.fields['content'].widget.attrs = {'class':'form-control'}
         course = get_object_or_404(Course, name=course_name)
         announcement = get_object_or_404(Announcement, id = announcement_id)
-        return render(request, 'announcements_edit.html',{'course':course,'announcement':announcement,'form':form})
 
+        def teacher_is_registered(course=course):
+            if course.teachers.filter(uid=request.user.custom_user.uid):
+                return True
+            return False
 
-
-
-# from django.shortcuts import render, get_object_or_404
-# from django.views import generic
-# from .models import Announcement
-# from courses.models import Course
-
-# # Create your views here.
-# class AnnouncementView(generic.View):
-
-#     def course_announcements(request, course_name):
-#         course = get_object_or_404(Course, name=course_name)
-#         return render(request, 'announcements.html', {'course': course})
-
-
-#     def get_queryset(self):
-#         return Announcement.objects.all()
+        return render(request, 'announcements_edit.html',{'course':course,'announcement':announcement,'form':form,'teacher_is_registered':teacher_is_registered})

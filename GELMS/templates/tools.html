@@ -2,6 +2,13 @@
 {% block title %}Announcements{% endblock %}
 {% block content_course %}
 
-  Tools coming soon...
+
+<!-- Force Redirect -->
+{% if user_is_registered %}
+{% else %}
+  <meta http-equiv="REFRESH" content="0;{% url 'courses' %}">
+{% endif %}
+
+Tools coming soon...
 
 {% endblock %}

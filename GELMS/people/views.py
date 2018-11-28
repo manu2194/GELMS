@@ -7,4 +7,14 @@ class PeopleView(generic.View):
 
     def course_people(request, course_name):
         course = get_object_or_404(Course, name=course_name)
-        return render(request, 'people.html', {'course': course})
+
+        def user_is_registered(course=course):
+            if course.teachers.filter(uid=request.user.custom_user.uid):
+                return True
+            if course.graders.filter(uid=request.user.custom_user.uid):
+                return True
+            if course.students.filter(uid=request.user.custom_user.uid):
+                return True
+            return False
+
+        return render(request, 'people.html', {'course': course, 'user_is_registered':user_is_registered})

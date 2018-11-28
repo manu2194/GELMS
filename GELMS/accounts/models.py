@@ -15,7 +15,7 @@ class CustomUser(models.Model):
     def __str__(self):
         return "UID: " + self.uid + " | Name: " + self.user.first_name + " " + self.user.last_name
 
-    def user_courses(self):
+    def get_user_courses(self):
         if self.status == 'Teacher':
             return self.course_teachers.all()
         elif self.status == 'Grader':
