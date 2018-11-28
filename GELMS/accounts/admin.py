@@ -9,6 +9,7 @@ class CustomUserInline(admin.StackedInline):
     model = CustomUser
     can_delete = False
     verbose_name_plural = 'Details'
+    exclude = ['reader_mode','multifactor',]
 
 
 class CustomUserAdmin(BaseUserAdmin):

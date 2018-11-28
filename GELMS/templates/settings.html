@@ -8,7 +8,8 @@
 
     <!-- Change Password -->
     </div>
-      Change Password:
+      Change Password: </br>
+      Password must be 8 characters long, cannot contain personal information, must include at least one letter.
       <form method="post">
         {% csrf_token %}
         Old password: {{ form.old_password }} </br>
@@ -30,12 +31,23 @@
     <!-- Reader Mode -->
     <div>
       Reader Mode:
+      {% if user.custom_user.reader_mode %}
+      ON
+      {% else %}
+      OFF
+      {% endif %}
     </div>
 
+    </br>
 
     <!-- Multifactor Authentication -->
     <div>
       Multifactor Authentication:
+      {% if user.custom_user.multifactor %}
+      ON
+      {% else %}
+      OFF
+      {% endif %}
     </div>
 
 
