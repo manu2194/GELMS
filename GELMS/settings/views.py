@@ -21,5 +21,9 @@ class SettingsView(generic.View):
                     messages.error(request, 'Error creating new password, try again.')
             else:
                 form = PasswordChangeForm(request.user)
+            
+            form.fields['old_password'].widget.attrs = {'class':'form-control'}
+            form.fields['new_password1'].widget.attrs = {'class':'form-control'}
+            form.fields['new_password2'].widget.attrs = {'class':'form-control'}
 
             return render(request, 'settings.html', {'form':form})

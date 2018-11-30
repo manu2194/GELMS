@@ -4,18 +4,32 @@
 
 <div class="container-fluid m-0">
   <div style="margin-top:70px">
-
-
     <!-- Change Password -->
     </div>
-      Change Password: </br>
-      Password must be 8 characters long, cannot contain personal information, must include at least one letter.
-      <form method="post">
+    <h3 class="ml-2 mt-2">Settings</h3>
+    <div class="card">
+    <div class="card-header">
+    Change Password
+    </div>
+    <div class="card-body">
+      <div class="mb-3">Password must be 8 characters long, cannot contain personal information, must include at least one letter.</div>
+      <form method="post" class="col-md-5">
         {% csrf_token %}
-        Old password: {{ form.old_password }} </br>
-        New password: {{ form.new_password1 }} </br>
-        Confirm new password: {{ form.new_password2 }} </br>
-        <button type="submit">Save changes</button>
+        
+        <div class="form-group">
+      <label class="text-dark" for="id_old_password">Old Password:</label>
+      {{ form.old_password }}
+    </div>
+    <div class="form-group">
+      <label class="text-dark" for="id_new_password1">New Password:</label>
+      {{ form.new_password1 }}
+    </div>
+    <div class="form-group">
+      <label class="text-dark" for="id_new_password2">Confirm New Password:</label>
+      {{ form.new_password2 }}
+    </div>
+
+<button class=" btn btn-primary btn-block" type="submit">Save changes</button>
       </form>
 
       {% if messages %}
@@ -25,24 +39,29 @@
           {% endfor %}
         </div>
       {% endif %}
-    </div>
+</div>
+
 
 
     <!-- Reader Mode -->
-    <div>
-      Reader Mode:
+  
+    <div class="card-header">
+      Reader Mode
+      </div>
+    <div class="card-body">
       {% if user.custom_user.reader_mode %}
       ON
       {% else %}
       OFF
       {% endif %}
-    </div>
+</div>
 
-    </br>
 
     <!-- Multifactor Authentication -->
-    <div>
-      Multifactor Authentication:
+    <div class="card-header">
+      Multifactor Authentication
+      </div>
+      <div class="card-body">
       {% if user.custom_user.multifactor %}
       ON
       {% else %}
@@ -50,8 +69,9 @@
       {% endif %}
     </div>
 
-
   </div>
-</div>
 
+
+</div>
+</div>
 {% endblock %}

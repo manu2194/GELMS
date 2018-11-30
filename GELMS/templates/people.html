@@ -12,41 +12,45 @@
 
 <!-- Display People -->
 <div class="card rounded border-0 shadow mt-1">
-  <div class="card-header p-2">
+<div class="card-header">
+<h3> People </h3>
+</div>
+<div class="card-header">
   Teachers:</div>
-  <div class="card-body p-2">
-  <ul>
+  <div class="card-body">
+  <ul class="list-group list-group-flush">
   {% for person in course.get_teachers %}
-  <li>{{person.user.get_full_name}}</li>
+  <li class="list-group-item">{{person.user.get_full_name}}</li>
   {% endfor %}
   </ul>
   </div>
-</div>
+
 {%if course.get_graders%}
 <div class="card rounded border-0 shadow mt-1">
-  <div class="card-header p-2">
+  <div class="card-header">
   Graders:</div>
-  <div class="card-body p-2">
-  <ul>
+  <div class="card-body">
+  <ul class="list-group list-group-flush">
   {% for person in course.get_graders %}
-    <li>{{person.user.get_full_name}}</li>
+    <li class="list-group-item">{{person.user.get_full_name}}</li>
   {% endfor %}
   </ul>
   </div>
-</div>
+
 {%endif%}
 
 
-<div class="card rounded border-0 shadow mt-1">
-  <div class="card-header p-2">
+
+  <div class="card-header">
   Students:</div>
-  <div class="card-body p-2">
-  <ul>
+  <div class="card-body">
+  <ul class="list-group list-group-flush">
   {% for person in course.get_students %}
-    <li>{{person.user.get_full_name}}</li>
+    <li class="list-group-item">{{person.user.get_full_name}}</li>
   {% endfor %}
   </ul>
   </div>
+
 </div>
 
 {% endblock %}

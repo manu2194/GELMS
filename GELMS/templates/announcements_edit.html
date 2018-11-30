@@ -23,10 +23,10 @@ Edit announcement item: <strong>{{announcement.content}}</strong>
         {{form.content}}
         <div class="input-group-append">
           <button class="btn btn-success" type="submit">Save</button>
-        </div>
-        <div class="input-group-append">
-          <a class="btn btn-danger ml-2" href="{% url 'announcements' course.name %}">Cancel</a>
-        </div>
+        
+        
+          <a class="btn btn-danger border-0" type="button" href="{% url 'announcements' course.name %}">Cancel</a>
+      </div>
       </div>
     </form>
 

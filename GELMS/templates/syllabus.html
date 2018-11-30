@@ -50,8 +50,10 @@
 
 <!-- Add Syllabus -->
   {% if user.custom_user.status == 'Teacher'%}
-    <div class="card-footer">
+    <div class="card-header">
       Add new syllabus item:
+      </div>
+      <div class="card-body">
       <form class="ml-2" method="POST">
         <div class="input-group">
         {{form.content}}
@@ -59,7 +61,7 @@
           <div class="input-group-append">
           </div>
           <div class="input-group-append">
-            <button class="btn btn-orange" type="submit">Submit</button>
+            <button class="btn btn-primary" type="submit">Submit</button>
           </div>
         </div>
       </form>
