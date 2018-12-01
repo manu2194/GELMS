@@ -12,17 +12,22 @@ class ToolsView(generic.View):
     def course_tools(request, course_name):
 
         course = get_object_or_404(Course, name=course_name)
-        tool = get_object_or_404(Tool, course=course)
 
-        if request.method == "POST":
-            form = ToolForm(request.POST, instance = tool)
-            if form.is_valid():
-                tool = form.save(commit=False)
-                tool.save()
-        else:
-            form = ToolForm(initial={'status':tool.status})
+        try:
+            tool = get_object_or_404(Tool, course=course)
 
-        form.fields['status'].widget.attrs = {'class':'form-control'}
+            if request.method == "POST":
+                form = ToolForm(request.POST, instance = tool)
+                if form.is_valid():
+                    tool = form.save(commit=False)
+                    tool.save()
+            else:
+                form = ToolForm(initial={'status':tool.status})
+
+            form.fields['status'].widget.attrs = {'class':'form-control'}
+
+        except:
+            form = ToolForm()
 
         def user_is_registered(course=course):
             if course.teachers.filter(uid=request.user.custom_user.uid):
