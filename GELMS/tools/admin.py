@@ -1,3 +1,8 @@
 from django.contrib import admin
+from tools.models import Tool
 
-# Register your models here.
+
+class ToolAdmin(admin.ModelAdmin):
+    exclude = ['status']
+
+admin.site.register(Tool, ToolAdmin)

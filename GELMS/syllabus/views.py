@@ -61,21 +61,20 @@ class SyllabusView(generic.View):
 
     @csrf_exempt
     def syllabus_edit(request,course_name,syllabus_id):
-        if request.method == "POST":
-            course = get_object_or_404(Course, name=course_name)
-            syllabus_edit = get_object_or_404(Syllabus, id = syllabus_id)
-            form = SyllabusForm(request.POST, instance = syllabus_edit)
-            if form.is_valid():
-                syllabus_edit = form.save(commit=False)
-                syllabus_edit.publish_date = datetime.now()
-                syllabus_edit.save()
-                return redirect("syllabus",course_name)
-        else:
-            form = SyllabusForm()
 
-        form.fields['content'].widget.attrs = {'class':'form-control'}
         course = get_object_or_404(Course, name=course_name)
         syllabus = get_object_or_404(Syllabus, id = syllabus_id)
+
+        if request.method == "POST":
+            form = SyllabusForm(request.POST, instance = syllabus)
+            if form.is_valid():
+                syllabus = form.save(commit=False)
+                syllabus.save()
+                return redirect("syllabus",course_name)
+        else:
+            form = SyllabusForm(initial={'content':syllabus.content, 'due_date':syllabus.due_date})
+
+        form.fields['content'].widget.attrs = {'class':'form-control'}
 
         def teacher_is_registered(course=course):
             if course.teachers.filter(uid=request.user.custom_user.uid):

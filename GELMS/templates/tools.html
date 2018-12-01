@@ -9,6 +9,57 @@
   <meta http-equiv="REFRESH" content="0;{% url 'courses' %}">
 {% endif %}
 
-Tools coming soon...
+<!-- Page Heading -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="mt-2 ml-2">Tools for {{course.name}}</h3>
+  </div>
+
+
+<!-- Display Tools -->
+  <div class="card-body">
+  {% if course.course_tools.all%}
+    <table class="table table-striped table-bordered shadow">
+      <thead class="thead-dark">
+        <tr>
+          <th scope = "col md-2">Name</th>
+          <th scope = "col md-2">Status</th>
+          {% if user.custom_user.status == 'Teacher'%}
+          <th scope = "col md-2">Actions</th>
+          {% endif %}
+        </tr>
+      </thead>
+        </tbody>
+        {% for tool in course.get_tools %}
+          <tr>
+            <td>{{tool.name}}</td>
+            {% if tool.status %}
+            <td>Unlocked</td>
+            {% else %}
+            <td>Locked</td>
+            {% endif %}
+            {% if user.custom_user.status == 'Teacher'%}
+            <td>
+              <form class="ml-2" method="POST">
+                <div class="input-group">
+                {{form.status}}
+                  <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Save</button>
+                  </div>
+                </div>
+              </form>
+            </td>
+            {% endif %}
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+  {% else %}
+    <text class="text-danger ml-2"> No tools for this course. </text>
+  {% endif %}
+  </div>
+</div>
+
+
 
 {% endblock %}

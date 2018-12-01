@@ -8,11 +8,9 @@ class AnnouncementForm(forms.ModelForm):
         model = Announcement
         fields = ("content",)
 
+
 class AnnouncementEditForm(forms.ModelForm):
 
-    
     class Meta:
         model = Announcement
         fields = ("content",)
-
-        

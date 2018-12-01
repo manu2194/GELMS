@@ -42,3 +42,6 @@ class Course(models.Model):
 
     def get_announcements(self):
         return self.course_announcements.order_by('-publish_date')
+
+    def get_tools(self):
+        return self.course_tools.all()

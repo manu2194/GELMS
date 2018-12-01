@@ -1,12 +1,9 @@
 import datetime
 from datetime import datetime, timezone
-
 from django.shortcuts import get_object_or_404, redirect, render, reverse,HttpResponseRedirect
 from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
-
 from courses.models import Course
-
 from .forms import AnnouncementForm
 from .models import Announcement
 
@@ -63,21 +60,22 @@ class AnnouncementView(generic.View):
 
     @csrf_exempt
     def announcement_edit(request,course_name,announcement_id):
-        if request.method == "POST":
-            course = get_object_or_404(Course, name=course_name)
-            announcement_edit = get_object_or_404(Announcement, id = announcement_id)
-            form = AnnouncementForm(request.POST, instance = announcement_edit)
-            if form.is_valid():
-                announcement_edit = form.save(commit=False)
-                announcement_edit.publish_date = datetime.now()
-                announcement_edit.save()
-                return redirect("announcements",course_name)
-        else:
-            form = AnnouncementForm()
 
-        form.fields['content'].widget.attrs = {'class':'form-control'}
         course = get_object_or_404(Course, name=course_name)
         announcement = get_object_or_404(Announcement, id = announcement_id)
+
+        if request.method == "POST":
+
+            form = AnnouncementForm(request.POST, instance = announcement)
+            if form.is_valid():
+                announcement = form.save(commit=False)
+                announcement.publish_date = datetime.now()
+                announcement.save()
+                return redirect("announcements",course_name)
+        else:
+            form = AnnouncementForm(initial={'content':announcement.content})
+
+        form.fields['content'].widget.attrs = {'class':'form-control'}
 
         def teacher_is_registered(course=course):
             if course.teachers.filter(uid=request.user.custom_user.uid):
