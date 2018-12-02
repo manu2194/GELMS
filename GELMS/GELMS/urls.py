@@ -40,4 +40,5 @@ urlpatterns = [
     path('<course_name>/syllabus/<syllabus_id>/syllabus_delete',SyllabusView.syllabus_delete,name="syllabus_delete"),
     path('<course_name>/people/', PeopleView.course_people, name='people'),
     path('<course_name>/tools/', ToolsView.course_tools, name='tools'),
+    path('help', DashboardView.help, name="help"),
 ]

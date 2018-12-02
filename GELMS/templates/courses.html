@@ -6,14 +6,21 @@
   <div class="container-fluid m-0">
   {% if user.custom_user.reader_mode == False %}
     <div style="margin-top:70px">
-    <h3 class="ml-2 mt-2">Courses</h3>
+    <h2 class="ml-2 mt-2 p-3">Courses</h2>
       <div class="card-columns">
 
 
         {% for course in user.custom_user.get_user_courses %}
-          <div class="card-course card p-2">
-            <a class="card-link" href="{% url 'announcements' course.name %}">{{ course.name }}</a>
+        <a href="{% url 'announcements' course.name %}">
+          <div class="card-course card border-0 p-3">
+          <div class="card-title font-weight-bold">
+            <u>{{ course.name }}</u>
+            </div>
+            <div class="card-text small">
+            {{ course.title }}
+            </div>
           </div>
+        </a>
         {% endfor %}
     {% else %}
       <div style="margin-top:90px">

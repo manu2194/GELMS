@@ -47,7 +47,11 @@
  
     <div class="custom-control custom-checkbox">
       {{form.status}}
-      <label class="custom-control-label text-dark" for="id_status">Lock/Unlock</label>
+      {% if course.course_tools.status %}
+      <label class="custom-control-label text-dark" for="id_status">Lock</label>
+      {% else %}
+      <label class="custom-control-label text-dark" for="id_status">Unlock</label>
+      {% endif %}
       </div> 
 </div>
 </form>
@@ -101,7 +105,11 @@
  
     <div class="custom-control custom-checkbox">
       {{form.status}}
-      <label class="custom-control-label text-light" for="id_status">Lock/Unlock</label>
+      {% if course.course_tools.status %}
+      <label class="custom-control-label text-light" for="id_status">Lock</label>
+      {% else %}
+      <label class="custom-control-label text-light" for="id_status">Unlock</label>
+      {% endif %}
       </div> 
 </div>
 </form>

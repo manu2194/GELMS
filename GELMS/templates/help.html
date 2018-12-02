@@ -1,0 +1,222 @@
+
+{% extends 'base.html' %}
+{% block title %}Help{% endblock %}
+{% load static %}
+
+{% block content %}
+
+<body class="base_body_style_login">
+<div class="container">
+<div class="card p-4 shadow-lg rounded">
+<div>
+    <h2> What is GELMS? </h2>
+    <p><a href="{% url 'home' %}">GELMS</a>, a Generic Electronic Learning Management System is a Client-Server based web application
+    that needs access to the internet connection and it needs a web browser to open the application, Google
+    Chrome, Mozilla Firefox or Safari anything would work. Also, this application is made keeping in mind
+    the busy schedule of person, so this even works on a mobile device running on any platform like Android,
+    iOS etc. Also, a person should be enrolled in the respective institution using our platform to access the
+    features of our application.
+    </p>
+</div>
+<div>
+<hr>
+    <h2>Product Features</h2>
+    <p>
+        Admin Features:
+        <ul>
+        <li>Admins can add and remove courses</li>
+        <li>Admins can add and remove students from specific course</li>
+        <li>Admins can assign a teacher and/or grader to a specific course</li>
+        </ul>
+    </p>
+    <p>
+        Teacher Features:
+        <ul>
+        <li>Teachers can post, edit, and remove a syllabus to a specific course</li>
+        <li>Teachers can view a list of all people (students, teachers, graders) in a specific course</li>
+        <li>Teachers can turn reader mode on and off</li>
+        <li>Teachers can post, edit, and remove announcements to specific course</li>
+        </ul>
+    </p>
+    <p>
+        Student Features:
+        <ul>
+        <li>Students can view announcements for a specific course</li>
+        <li>Studetns can view a syllabus for a specific course</li>
+        <li>Studetns can turn reader mode on or off</li>
+        </ul>
+    </p>
+</div>
+<hr>
+<div>
+
+    <h2>Usage</h2>
+    <p>
+        <h4>Landing Page</h4>
+        <img class="img-fluid" src="{% static '../static/images/landingpage.png' %}">
+        <p>
+            <ul>
+                <li>This is the landing page</li>
+                <li>Regular users can log in to the application from here</li>
+                <li>Admins must visit the following URL to log in:
+                    <a class="text-primary" href="{% url 'admin:index' %}">http://gelms.pythonanywhere.com/admin</a>
+                </li>
+            </ul>
+        </p>
+    </p>
+<hr>
+
+    <p>
+        <h4>Admin Log In:</h4>
+        <img class="img-fluid" src="{% static '../static/images/admin_login.png' %}">
+        <p>
+            <ul>
+                <li>This is the admin login page</li>
+                <li>The default admin username is <strong>superuser</strong> and the default password is <strong>superuser</strong></li>
+            </ul>
+        </p>
+    </p>
+<hr>
+    <p>
+        <h4>Admin Home Page</h4>
+        <img class="img-fluid" src="{% static '../static/images/admin_home.png' %}">
+        <p>
+            <ul>
+                <li>This is the initial admin interface where the admin can add/remove users, courses and tools</li>
+            </ul>
+        </p>
+    </p>
+<hr>
+    <p>
+        <h4>Admin User Management</h4>
+        <img class="img-fluid" src="{% static '../static/images/admin_user.png' %}">
+        <p>
+            <ul>
+                <li>This is the add user interface</li>
+                <li>The button on the top right allows the admin to create a new user</li>
+                <li>Clicking on a user email allows the admin to edit an existing user</li>
+            </ul>
+        </p>
+    </p>
+<hr>
+    <p>
+        <h4>Admin Course Management</h4>
+        <img class="img-fluid" src="{% static '../static/images/admin_courses.png' %}">
+        <p>
+            <ul>
+                <li>This is the add course interface</li>
+                <li>The button on the top right allows the admin to create a new course</li>
+                <li>Clicking on a course name allows the admin to edit an existing course</li>
+            </ul>
+        </p>
+    </p>
+<hr>
+    <p>
+        <h4>Admin Tool Management</h4>
+        <img class="img-fluid" src="{% static '../static/images/admin_tools.png' %}">
+        <p>
+            <ul>
+                <li>This is the add tools interface</li>
+                <li>The add button on the right allows the admin to add a new tool</li>
+                <li>Clicking on a tool allows the admin to edit an existing tool</li>
+            </ul>
+        </p>
+    </p>
+<hr>
+    <p>
+        <h4>Dashboard Interface</h4>
+        <img class="img-fluid" src="{% static '../static/images/dashboard_interface.png' %}">
+        <p>
+            <ul>
+                <li>Once the user is logged in, they are greeted with the dashboard interface.</li>
+                <li>The navigation bar on the top contains the clickable links to the different features that GELMS offers.</li>
+            </ul>
+        </p>
+    </p>
+<hr>
+    <p>
+        <h4>Courses Page</h4>
+        <img class="img-fluid" src="{% static '../static/images/course_interface.png' %}">
+        <p>
+            <ul>
+                <li>This is the courses page which shows the courses that the student/teacher is registered to</li>
+            </ul>
+        </p>
+    </p>
+    <hr>
+    <p>
+        <h4>Settings Page</h4>
+        <img class="img-fluid" src="{% static '../static/images/settings_interface.png' %}">
+        <p>
+            <ul>
+                <li>This is the settings page</li>
+                <li>The user can change their password, turn on/off reader mode and turn on/off multifactor authentication here.(Note: Multifactor Authentication is currently not active and will be released in an upcoming version of GELMS)</li>
+            </ul>
+
+        </p>
+    </p>
+<hr>
+    <p>
+        <h4>Announcements Page</h4>
+        <img class="img-fluid" src="{% static '../static/images/announcements_student_interface.png' %}">
+        <p>
+            <ul>
+                <li>Students can view the announcements posted by the teacher for a particular course here</li>
+                <li>Teachers have the additional ability to add new announcements from this page.</li>
+                <li>Teachers can also edit or delete existing announcements from this page</li>
+                <img class="img-fluid" src="{% static '../static/images/announcements_teacher_interface.png' %}">
+            </ul>
+
+        </p>
+    </p>
+<hr>
+    <p>
+        <h4>Syllabus Page</h4>
+        <img class="img-fluid" src="{% static '../static/images/syllabus_student_interface.png' %}">
+        <p>
+            <ul>
+                <li>Students can view the syllabus posted by the teacher for a particular course here</li>
+                <li>Teachers have the additional ability to add new syllabi items from this page.</li>
+                <li>Teachers can also edit or delete existing syllabi items from this page</li>
+                <img class="img-fluid" src="{% static '../static/images/syllabus_teacher_interface.png' %}">
+            </ul>
+
+        </p>
+    </p>
+<hr>
+    <p>
+        <h4>People Page</h4>
+        <img class="img-fluid" src="{% static '../static/images/people_interface.png' %}">
+        <p>
+            <ul>
+                <li>This page shows the people registered to a particular course</li>
+            </ul>
+
+        </p>
+    </p>
+<hr>
+    <p>
+        <h4>Tools Page</h4>
+        <img class="img-fluid" src="{% static '../static/images/tools_student_interface.png' %}">
+        <p>
+            <ul>
+                <li>This is the tools page</li>
+                <li>It shows a domain-specific software tool of the course that can be used by the
+                student user</li>
+                <li>Teachers have the additional ability to lock or unlock the tool for that course. 
+            </ul>
+
+        </p>
+    </p>
+
+
+
+</div>
+</div>
+</div>
+<nav class="navbar navbar-expand-sm bg-pink navbar-dark fixed-bottom justify-content-center shadow">
+<a class="nav-link text-warning p-0" href="{% url "home" %}">Home</a>
+</nav>
+
+
+{% endblock%}

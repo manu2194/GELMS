@@ -21,7 +21,11 @@
   <div class="card-body">
   <ul class="list-group list-group-flush">
   {% for person in course.get_teachers %}
-  <li class="list-group-item">{{person.user.get_full_name}}</li>
+  {% if person.user.get_full_name == user.get_full_name%}
+    <li class="list-group-item font-weight-bold">{{person.user.get_full_name}}</li>
+    {% else %}
+    <li class="list-group-item">{{person.user.get_full_name}}</li>
+    {% endif %}
   {% endfor %}
   </ul>
   </div>
@@ -33,7 +37,11 @@
   <div class="card-body">
   <ul class="list-group list-group-flush">
   {% for person in course.get_graders %}
+    {% if person.user.get_full_name == user.get_full_name%}
+    <li class="list-group-item font-weight-bold">{{person.user.get_full_name}}</li>
+    {% else %}
     <li class="list-group-item">{{person.user.get_full_name}}</li>
+    {% endif %}
   {% endfor %}
   </ul>
   </div>
@@ -47,7 +55,11 @@
   <div class="card-body">
   <ul class="list-group list-group-flush">
   {% for person in course.get_students %}
+   {% if person.user.get_full_name == user.get_full_name%}
+    <li class="list-group-item font-weight-bold">{{person.user.get_full_name}}</li>
+    {% else %}
     <li class="list-group-item">{{person.user.get_full_name}}</li>
+    {% endif %}
   {% endfor %}
   </ul>
   </div>
@@ -89,7 +101,11 @@
   <div class="card-body">
   <ul class="list-group list-group-flush">
   {% for person in course.get_students %}
+  {% if person == user.get_full_name%}
     <li class="list-group-item bg-dark">{{person.user.get_full_name}}</li>
+  {% else %}
+  <li class="list-group-item bg-dark">{{person.user.get_full_name}}</li>
+  {% endif %}
   {% endfor %}
   </ul>
   </div>

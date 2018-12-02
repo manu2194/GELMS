@@ -8,6 +8,7 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif|Slabo+27px');
 @import url('https://fonts.googleapis.com/css?family=Dosis');
 @import url('https://fonts.googleapis.com/css?family=Oxygen');
+@import url('https://fonts.googleapis.com/css?family=Muli|Raleway');
 /* !!!! Base styles: !!!! */
 
 .base_body_style {
@@ -21,25 +22,26 @@
   background-size: cover;
   padding-bottom:20px;
   /* padding-top:8%; */
-  font-family: 'Oxygen', sans-serif;
+  font-family: 'Muli', sans-serif;
 
   /*background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);*/
 }
 .base_body_style_login{
-    background: #FFEEEE;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, rgb(237, 233, 238), #FFEEEE);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, rgb(237, 233, 238), #FFEEEE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background-image:url('/static/images/bg-1.jpg');
+    background-image: linear-gradient( 96.1deg,  rgba(229,73,73,1) 10.8%, rgba(246,113,113,1) 107.8% );
   color:black;
 
   background-size: cover;
   padding-bottom:20px;
   /* padding-top:8%; */
-  font-family: 'Oxygen', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 .bg-black{
     background-color:rgb(49, 49, 49) !important;
+}
+
+.bg-none{
+    background: none;
 }
 .reader-body-style{
     background: rgb(27, 27, 27);  /* fallback for old browsers */
@@ -62,6 +64,12 @@
 .card-reader{
     color:white;
 }
+
+footer{
+    width:100%;
+    position: fixed;
+    bottom:0;
+}
 /* .base_main_window_style {
   border-radius:5px;
   padding:20px;
@@ -81,6 +89,9 @@ outline:none;
 border:none;
 }
 
+.bg-pink{
+    background-image: linear-gradient( 96.1deg,  rgb(158, 47, 47) 10.8%, rgb(155, 74, 74) 107.8% );
+}
 .btn-orange{
     background-color:orange;
     color:black;
@@ -100,7 +111,7 @@ border:none;
     background-color: rgb(255, 166, 0);
     color:black;
     font-weight: bold;
-    border:none;
+    border:orange;
     border-radius: 5px;
 
 }
@@ -132,6 +143,7 @@ background:none;
 color:black;
 text-align: left;
 }
+
 
 
 .login-box input{
@@ -169,17 +181,11 @@ text-align: left;
 border: 1px solid rgba(255, 166, 0, 0.342);
 }
 
-.login-box form{
-    margin-top: 20px;
-}
 
 .heading-link{
     margin-bottom:1em;
 }
-label{
-    color:white;
-    font-weight:bold;
-}
+
 
 .custom-control label{
     color:white;
@@ -229,20 +235,24 @@ label{
 
 }
 .bg-purple{
-    background-color: rgb(75, 47, 92);
+    background-image: linear-gradient( 96.1deg,  rgba(229,73,73,1) 10.8%, rgba(246,113,113,1) 107.8% );
 }
 .bg-purple-card a{
     color:white;
 }
 
 .bg-purple-dark{
-    background-color: rgb(50, 29, 63);
+    background-image: linear-gradient( 96.1deg,  rgb(192, 61, 61) 10.8%, rgb(192, 88, 88) 107.8% );
 }
 .bg-orange{
     background-color:orange;
 }
 .text-white{
     color:white;
+}
+
+.text-purple{
+    color:purple;
 }
 
 .dashboard-card{
@@ -295,9 +305,13 @@ transition: background-color 0.2s ease;
 
 .navbar .navbar-nav a{
     transition: color 0.5s ease;
+
+    background-color: rgba(0, 0, 0, 0);
+    
 }
 .navbar .navbar-nav a:hover{
     color:orange !important;
+   
     text-decoration: underline;
 }
 
@@ -309,7 +323,7 @@ transition: background-color 0.2s ease;
     transition: background 0.2s ease;
 }
 .card-course:hover{
-    background: orange;
+    background: orange!important;
 }
 @media (max-width: 600px) {
     .card.login.signup {
