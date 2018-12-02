@@ -11,6 +11,7 @@
 
 
 <!-- Display People -->
+{% if user.custom_user.reader_mode == False %}
 <div class="card rounded border-0 shadow mt-1">
 <div class="card-header">
 <h3> People </h3>
@@ -37,7 +38,7 @@
   </ul>
   </div>
 
-{%endif%}
+{% endif %}
 
 
 
@@ -50,6 +51,49 @@
   {% endfor %}
   </ul>
   </div>
+
+  {% else %}
+
+  <div class="card bg-dark rounded border-0 shadow mt-1">
+<div class="card-header text-light">
+<h2 class="mt-2 ml-2">  People </h2>
+</div>
+<div class="card-header text-light">
+  Teachers:</div>
+  <div class="card-body">
+  <ul class="list-group list-group-flush">
+  {% for person in course.get_teachers %}
+  <li class="list-group-item bg-dark text-light">{{person.user.get_full_name}}</li>
+  {% endfor %}
+  </ul>
+  </div>
+
+{%if course.get_graders%}
+<div class="card rounded bg-dark text-light border-0 shadow mt-1">
+  <div class="card-header">
+  Graders:</div>
+  <div class="card-body">
+  <ul class="list-group list-group-flush">
+  {% for person in course.get_graders %}
+    <li class="list-group-item bg-dark">{{person.user.get_full_name}}</li>
+  {% endfor %}
+  </ul>
+  </div>
+
+{%endif%}
+
+
+
+  <div class="card-header">
+  Students:</div>
+  <div class="card-body">
+  <ul class="list-group list-group-flush">
+  {% for person in course.get_students %}
+    <li class="list-group-item bg-dark">{{person.user.get_full_name}}</li>
+  {% endfor %}
+  </ul>
+  </div>
+  {% endif %}
 
 </div>
 

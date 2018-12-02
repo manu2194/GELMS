@@ -35,8 +35,8 @@ class SyllabusView(generic.View):
         else:
             form = SyllabusForm()
 
-        form.fields['content'].widget.attrs = {'class':'form-control'}
-        form.fields['due_date'].widget.attrs = {'class':'datepicker'}
+        form.fields['content'].widget.attrs = {'class':'form-control mb-2'}
+        form.fields['due_date'].widget.attrs = {'class':'form-control p-0','style':'width:150px'}
         course = get_object_or_404(Course, name=course_name)
 
         def user_is_registered(course=course):
@@ -74,7 +74,8 @@ class SyllabusView(generic.View):
         else:
             form = SyllabusForm(initial={'content':syllabus.content, 'due_date':syllabus.due_date})
 
-        form.fields['content'].widget.attrs = {'class':'form-control'}
+        form.fields['content'].widget.attrs = {'class':'form-control mb-2'}
+        form.fields['due_date'].widget.attrs = {'class':'form-control p-0','style':'width:150px'}
 
         def teacher_is_registered(course=course):
             if course.teachers.filter(uid=request.user.custom_user.uid):

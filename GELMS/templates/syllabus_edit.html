@@ -11,23 +11,58 @@
 
 
 <!-- Edit Syllabus -->
+{% if user.custom_user.reader_mode == False%}
 <div class="card">
-  <div class="card-header">
-    Edit syllabus item: <strong>{{syllabus.content}}</strong>
-  </div>
+<div class="card-header">
+Edit Content
+</div>
+<form class="ml-2" method="POST">
   <div class="card-body">
-    <form class="ml-2" method="POST">
-      <strong>New Content:</strong>
-        <div class="input-group">
+    
+      
+        <div class="form-group">
+        <label for="id_content" class="text-dark">
+        Content:
+        </label>
         {{form.content}}
+        <label for="id_due_date" class="text-dark">
+        Due Date:
+        </label>
         {{form.due_date}}
-        <div class="input-group-append">
-          <button class="btn btn-success" type="submit">Save</button>
-        
-          <a class="btn btn-danger" href="{% url 'syllabus' course.name %}">Cancel</a>
         </div>
-      </div>
+       
+          <button class="btn btn-success" type="submit">Save</button>     
+          <button class="btn btn-danger" href="{% url 'syllabus' course.name %}">Cancel</button>
+
     </form>
   </div>
 </div>
+{% else %}
+<div class="card bg-dark">
+<div class="card-header text-light">
+Edit Content
+</div>
+<form class="ml-2" method="POST">
+  <div class="card-body">
+    
+      
+        <div class="form-group">
+        <label for="id_content" class="text-light">
+        Content:
+        </label>
+        {{form.content}}
+        <label for="id_due_date" class="text-light">
+        Due Date:
+        </label>
+        {{form.due_date}}
+        </div>
+       
+          <button class="btn btn-success" type="submit">Save</button>     
+          <button class="btn btn-danger" href="{% url 'syllabus' course.name %}">Cancel</button>
+
+    </form>
+  </div>
+</div>
+
+{% endif %}
 {% endblock %}

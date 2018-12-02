@@ -11,6 +11,7 @@
 
 
 <!-- Page Heading -->
+{% if user.custom_user.reader_mode == False %}
 <div class="card">
   <div class="card-header">
     <h3 class="mt-2 ml-2">Announcements for {{course.name}}</h3>
@@ -57,19 +58,73 @@
       </div>
       <div class="card-body">
       <form class="ml-2" method="POST">
-        <div class="input-group">
+        <div class="form-group">
         {{form.content}}
-          <div class="input-group-append">
-          {{form.publish_date}}
-          </div>
-          <div class="input-group-append">
-            <button class="btn btn-primary" type="submit">Submit</button>
-          </div>
         </div>
+            <button class="btn btn-primary pl-5 pr-5" type="submit">Submit</button>
+        
       </form>
     </div>
   {% endif %}
 </div>
+{% else %}
+<div class="card bg-dark">
+  <div class="card-header">
+    <h2 class="mt-2 ml-2 text-light">Announcements for {{course.name}}</h2>
+  </div>
+
+
+<!-- Display Announcements -->
+  <div class="card-body">
+  {% if course.course_announcements.all%}
+    <table class="table table-dark shadow">
+      <thead class="thead-dark">
+        <tr>
+          <th scope = "col md-2">Publisher</th>
+          <th scope = "col md-2">Content</th>
+          <th scope = "col md-6">Published date</th>
+          {% if user.custom_user.status == 'Teacher'%}
+          <th scope = "col md-2">Actions</th>
+          {% endif %}
+        </tr>
+      </thead>
+        </tbody>
+        {% for announcement in course.get_announcements%}
+          <tr>
+            <td>{{announcement.publisher}}</td>
+            <td>{{announcement.content}}</td>
+            <td>{{announcement.publish_date}}</td>
+            {% if user.custom_user.status == 'Teacher'%}
+            <td><a href="{% url 'announcement_edit' course.name announcement.id %}" class="text-primary mr-2">Edit</a>|<a href="{% url 'announcement_delete' course.name announcement.id %}" class="text-danger ml-2">Delete</a>
+            {% endif %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+  {% else %}
+    <text class="text-danger ml-2">No new announcements. </text>
+  {% endif %}
+  </div>
+
+
+<!-- Add Announcements -->
+  {% if user.custom_user.status == 'Teacher'%}
+    <div class="card-header text-light">
+      Add new announcement:
+      </div>
+      <div class="card-body">
+      <form class="ml-2" method="POST">
+        <div class="form-group">
+        {{form.content}}
+        </div>
+            <button class="btn btn-primary pl-5 pr-5" type="submit">Submit</button>
+        
+      </form>
+    </div>
+  {% endif %}
+</div>
+
+{% endif %}
 
 
 <!-- date script -->

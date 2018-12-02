@@ -31,6 +31,7 @@ urlpatterns = [
     path('courses/', CourseView.user_courses, name = 'courses'),
     path('dashboard/', DashboardView.user_dashboard, name = 'dashboard'),
     path('settings/', SettingsView.user_settings, name='settings'),
+    path('settings/reader_mode',SettingsView.reader_mode, name="reader_mode"),
     path('<course_name>/announcements',AnnouncementView.course_announcements, name = 'announcements'),
     path('<course_name>/announcement/<announcement_id>/announcement_edit',AnnouncementView.announcement_edit,name="announcement_edit"),
     path('<course_name>/announcements/<announcement_id>/announcement_delete',AnnouncementView.announcement_delete,name="announcement_delete"),

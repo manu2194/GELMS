@@ -2,17 +2,32 @@
 {% block title %}Dashboard{% endblock %}
 {% block content_dash %}
 <div class="container-fluid m-0">
-<div style="margin-top:70px">
 
+
+
+
+{% if user.custom_user.reader_mode == False %}
+<div style="margin-top:70px">
 <h2 class="ml-2 mt-2">Welcome, <strong>{{user.get_short_name}}</strong></h2>
 <div class="card rounded border-0 shadow">
+{% else %}
+<div style="margin-top:90px">
+<h1 class="ml-2 mt-4">Welcome, <strong>{{user.get_short_name}}</strong></h1>
+<div class="card text-white bg-dark rounded border-0 shadow">
+{% endif %}
 
 <div class="card-header">User details</div>
 <div class="card-body">
-    <ul>
-      <li>Name: {{ user.get_full_name }}</li>
-      <li>UID: {{ user.custom_user.uid }}</li>
-      <li>Status: {{user.custom_user.status}}</li>
+    <ul class="list-group list-group-flush">
+    {% if user.custom_user.reader_mode == False %}
+      <li class="list-group-item">Name: {{ user.get_full_name }}</li>
+      <li class="list-group-item">UID: {{ user.custom_user.uid }}</li>
+      <li class="list-group-item">Status: {{user.custom_user.status}}</li>
+      {% else %}
+      <li class="list-group-item bg-dark">Name: {{ user.get_full_name }}</li>
+      <li class="list-group-item bg-dark">UID: {{ user.custom_user.uid }}</li>
+      <li class="list-group-item bg-dark">Status: {{user.custom_user.status}}</li>
+      {% endif %}
     </ul>
     </div>
     </div>

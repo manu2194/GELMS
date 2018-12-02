@@ -1,7 +1,10 @@
 {% extends 'base_dash.html' %}
 {% block title %}Courses{% endblock %}
 {% block content_dash %}
+
+
   <div class="container-fluid m-0">
+  {% if user.custom_user.reader_mode == False %}
     <div style="margin-top:70px">
     <h3 class="ml-2 mt-2">Courses</h3>
       <div class="card-columns">
@@ -12,7 +15,19 @@
             <a class="card-link" href="{% url 'announcements' course.name %}">{{ course.name }}</a>
           </div>
         {% endfor %}
+    {% else %}
+      <div style="margin-top:90px">
+    <h1 class="ml-2 mt-2">Courses</h1>
+      <div class="card-columns">
 
+
+        {% for course in user.custom_user.get_user_courses %}
+          <div class="card-course card bg-dark p-4">
+            <a class="card-link text-light" href="{% url 'announcements' course.name %}">{{ course.name }}</a>
+          </div>
+        {% endfor %}
+
+    {% endif %}
 
       </div>
     </div>

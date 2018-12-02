@@ -6,9 +6,18 @@
 
   <!-- Navbar: -->
   <div>
+  {% if user.custom_user.reader_mode == False%}
   <nav class="navbar bg-purple fixed-top p-1 navbar-expand-sm navbar-dark shadow">
+  {% else %}
+  <nav class="navbar bg-dark fixed-top p-1 navbar-expand-sm navbar-dark shadow">
+  {% endif %}
+  {% if user.custom_user.reader_mode == False%}
     <span class="navbar-text ml-2" style="font-size:25px;margin-right:20px;font-family: 'Lobster';">
     Gelms </span>
+    {% else %}
+    <span class="navbar-text ml-2" style="font-size:35px;margin-right:20px;font-family: 'Lobster';">
+    Gelms </span>
+    {% endif %}
     <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
       <span class="navbar-toggler-icon"></span>
     </button>

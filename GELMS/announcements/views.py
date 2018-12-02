@@ -34,8 +34,10 @@ class AnnouncementView(generic.View):
 
         else:
             form = AnnouncementForm()
-
-        form.fields['content'].widget.attrs = {'class':'form-control'}
+        if request.user.custom_user.reader_mode == False:
+            form.fields['content'].widget.attrs = {'class':'form-control'}
+        else:
+            form.fields['content'].widget.attrs = {'class':'form-control form-control-lg'}
         course = get_object_or_404(Course, name=course_name)
 
         def user_is_registered(course=course):
@@ -74,8 +76,10 @@ class AnnouncementView(generic.View):
                 return redirect("announcements",course_name)
         else:
             form = AnnouncementForm(initial={'content':announcement.content})
-
-        form.fields['content'].widget.attrs = {'class':'form-control'}
+        if request.user.custom_user.reader_mode == False:
+            form.fields['content'].widget.attrs = {'class':'form-control'}
+        else:
+            form.fields['content'].widget.attrs = {'class':'form-control form-control-lg'}
 
         def teacher_is_registered(course=course):
             if course.teachers.filter(uid=request.user.custom_user.uid):

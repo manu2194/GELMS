@@ -4,7 +4,10 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 @import url('https://fonts.googleapis.com/css?family=Niramit');
 @import url('https://fonts.googleapis.com/css?family=Sedgwick+Ave');
-
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px');
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif|Slabo+27px');
+@import url('https://fonts.googleapis.com/css?family=Dosis');
+@import url('https://fonts.googleapis.com/css?family=Oxygen');
 /* !!!! Base styles: !!!! */
 
 .base_body_style {
@@ -12,16 +15,53 @@
   background: #FFEEEE;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, rgb(237, 233, 238), #FFEEEE);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, rgb(237, 233, 238), #FFEEEE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
+  /* background-image:url('/static/images/bg-1.jpg'); */
+  color:black;
 
   background-size: cover;
   padding-bottom:20px;
   /* padding-top:8%; */
-  font-family: 'Niramit', sans-serif;
+  font-family: 'Oxygen', sans-serif;
 
   /*background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);*/
 }
+.base_body_style_login{
+    background: #FFEEEE;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, rgb(237, 233, 238), #FFEEEE);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, rgb(237, 233, 238), #FFEEEE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-image:url('/static/images/bg-1.jpg');
+  color:black;
 
+  background-size: cover;
+  padding-bottom:20px;
+  /* padding-top:8%; */
+  font-family: 'Oxygen', sans-serif;
+}
+
+.bg-black{
+    background-color:rgb(49, 49, 49) !important;
+}
+.reader-body-style{
+    background: rgb(27, 27, 27);  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, rgb(43, 43, 43), rgb(54, 54, 54));  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, rgb(43, 43, 43), rgb(48, 48, 48)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color:white;
+  
+    background-size: cover;
+    padding-bottom:20px;
+    font-size: 30px;
+    /* padding-top:8%; */
+    font-family: 'Oxygen', sans-serif;
+
+}
+
+.card{
+    color:black;
+}
+
+.card-reader{
+    color:white;
+}
 /* .base_main_window_style {
   border-radius:5px;
   padding:20px;
@@ -276,11 +316,16 @@ transition: background-color 0.2s ease;
         padding:10px;
       width:100%;
       margin:0;
+      margin-bottom:50px;
     }
     .sign-up-body{
         padding:4px;
     }
     .container.sign-up{
         padding:0;
+    }
+
+    .jumbotron{
+        margin-top:10px;
     }
   }

@@ -2,34 +2,52 @@
 {% block title %}Announcement Edit{% endblock %}
 {% block content_course %}
 
-
 <!-- Force Redirect -->
 {% if teacher_is_registered %}
 {% else %}
   <meta http-equiv="REFRESH" content="0;{% url 'courses' %}">
 {% endif %}
 
-
 <!-- Edit Announcement -->
+{% if user.custom_user.reader_mode == False %}
 <div class="card">
-<div class="card-header">
-Edit announcement item: <strong>{{announcement.content}}</strong>
-</div>
-<div class="card-body">
-<form class="ml-2" method="POST">
-      <strong>New Content:</strong>
-      <div class="input-group">
-
+  
+  <div class="card-header">
+  Edit Content
+      </div>
+    <form class="ml-2" method="POST">
+    
+      
+      <div class="card-body">
+      <div class="form-group">
         {{form.content}}
-        <div class="input-group-append">
+        </div>
           <button class="btn btn-success" type="submit">Save</button>
-        
-        
-          <a class="btn btn-danger border-0" type="button" href="{% url 'announcements' course.name %}">Cancel</a>
-      </div>
-      </div>
+              </form>
+          <button class="btn btn-danger rounded" href="{% url 'announcements' course.name %}">Cancel</button> 
+       </div>
     </form>
-
-  </div>
+ 
 </div>
+
+{% else %}
+
+<div class="card bg-dark">
+  <div class="card-header text-light">
+  Edit Content
+      </div>
+    <form class="ml-2" method="POST">
+      <div class="card-body">
+      <div class="form-group">
+        {{form.content}}
+        </div>
+          <button class="btn btn-success" type="submit">Save</button>
+              </form>
+          <button class="btn btn-danger rounded" href="{% url 'announcements' course.name %}">Cancel</button> 
+       </div>
+
+ 
+</div>
+
+{% endif %}
 {% endblock %}

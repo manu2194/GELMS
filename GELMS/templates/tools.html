@@ -10,6 +10,7 @@
 {% endif %}
 
 <!-- Page Heading -->
+{% if user.custom_user.reader_mode == False%}
 <div class="card">
   <div class="card-header">
     <h3 class="mt-2 ml-2">Tools for {{course.name}}</h3>
@@ -31,22 +32,26 @@
       </thead>
         </tbody>
           <tr>
-            <td>{{course.course_tools.name}}</td>
+            <td class="text-dark">{{course.course_tools.name}}</td>
             {% if course.course_tools.status %}
-            <td>Unlocked</td>
+            <td class="text-dark">Unlocked</td>
             {% else %}
-            <td>Locked</td>
+            <td class="text-dark">Locked</td>
             {% endif %}
             {% if user.custom_user.status == 'Teacher'%}
             <td>
-              <form class="ml-2" method="POST">
-                <div class="input-group">
-                {{form.status}}
-                  <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit">Save</button>
-                  </div>
-                </div>
-              </form>
+
+            <div class="input-group mb-3">
+
+<form method="POST">
+ 
+    <div class="custom-control custom-checkbox">
+      {{form.status}}
+      <label class="custom-control-label text-dark" for="id_status">Lock/Unlock</label>
+      </div> 
+</div>
+</form>
+
             </td>
             {% endif %}
           </tr>
@@ -57,6 +62,61 @@
   {% endif %}
   </div>
 </div>
+
+{% else %}
+
+<div class="card bg-dark">
+  <div class="card-header">
+    <h2 class="mt-2 ml-2 text-light">Tools for {{course.name}}</h2>
+  </div>
+
+
+<!-- Display Tools -->
+  <div class="card-body">
+  {% if course.course_tools %}
+    <table class="table table-dark shadow">
+      <thead class="thead-dark">
+        <tr>
+          <th scope = "col md-2">Name</th>
+          <th scope = "col md-2">Status</th>
+          {% if user.custom_user.status == 'Teacher'%}
+          <th scope = "col md-2">Actions</th>
+          {% endif %}
+        </tr>
+      </thead>
+        </tbody>
+          <tr>
+            <td class="text-light">{{course.course_tools.name}}</td>
+            {% if course.course_tools.status %}
+            <td class="text-light">Unlocked</td>
+            {% else %}
+            <td class="text-light">Locked</td>
+            {% endif %}
+            {% if user.custom_user.status == 'Teacher'%}
+            <td>
+
+            <div class="input-group mb-3">
+
+<form method="POST">
+ 
+    <div class="custom-control custom-checkbox">
+      {{form.status}}
+      <label class="custom-control-label text-light" for="id_status">Lock/Unlock</label>
+      </div> 
+</div>
+</form>
+
+            </td>
+            {% endif %}
+          </tr>
+        </tbody>
+      </table>
+  {% else %}
+    <text class="text-danger ml-2"> No tools for this course. </text>
+  {% endif %}
+  </div>
+</div>
+{% endif %}
 
 
 

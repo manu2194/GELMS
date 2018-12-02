@@ -3,6 +3,7 @@
 {% block content_dash %}
 
 <div class="container-fluid m-0">
+{% if user.custom_user.reader_mode == False %}
   <div style="margin-top:70px">
     <!-- Change Password -->
     </div>
@@ -13,6 +14,15 @@
     </div>
     <div class="card-body">
       <div class="mb-3">Password must be 8 characters long, cannot contain personal information, must include at least one letter.</div>
+
+{% if messages %}
+        <div class="messages">
+          {% for message in messages %}
+            <p {% if message.tags %} class="{{ message.tags }} bg-warning p-2 rounded"{% endif %}>{{ message }} </p>
+          {% endfor %}
+        </div>
+      {% endif %}
+
       <form method="post" class="col-md-5">
         {% csrf_token %}
         
@@ -32,45 +42,110 @@
 <button class=" btn btn-primary btn-block" type="submit">Save changes</button>
       </form>
 
-      {% if messages %}
-        <div class="messages">
-          {% for message in messages %}
-            <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }} </p>
-          {% endfor %}
-        </div>
-      {% endif %}
 </div>
-
-
-
     <!-- Reader Mode -->
   
     <div class="card-header">
       Reader Mode
       </div>
     <div class="card-body">
-      {% if user.custom_user.reader_mode %}
-      ON
-      {% else %}
-      OFF
-      {% endif %}
+<form action=" {% url "reader_mode" %} ">
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" name="reader_mode" class="custom-control-input" onclick="this.form.submit()" id="id_reader_mode">
+      <label class="custom-control-label text-dark" for="id_reader_mode">Enable/Disable</label>
+      </div> 
+</form>
 </div>
 
 
     <!-- Multifactor Authentication -->
-    <div class="card-header">
+    <div class="card-header text-muted">
       Multifactor Authentication
       </div>
       <div class="card-body">
       {% if user.custom_user.multifactor %}
       ON
       {% else %}
-      OFF
+       <i class="text-muted">Feature will be enabled in GELMS v3</i>
+      {% endif %}
+    </div>
+
+  </div>
+{% else %}
+
+<div style="margin-top:90px">
+    <!-- Change Password -->
+    </div>
+    <h1 class="ml-2 mt-2">Settings</h1>
+    <div class="card bg-dark">
+    <div class="card-header text-light">
+    Change Password
+    </div>
+    <div class="card-body text-light">
+      <div class="mb-3">Password must be 8 characters long, cannot contain personal information, must include at least one letter.</div>
+
+{% if messages %}
+        <div class="messages">
+          {% for message in messages %}
+            <p {% if message.tags %} class="{{ message.tags }} bg-warning"{% endif %}>{{ message }} </p>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <form method="post" class="col-md-5 ">
+        {% csrf_token %}
+        
+        <div class="form-group ">
+      <label class="text-light" for="id_old_password">Old Password:</label>
+      {{ form.old_password }}
+    </div>
+    <div class="form-group">
+      <label class="text-light" for="id_new_password1">New Password:</label>
+      {{ form.new_password1 }}
+    </div>
+    <div class="form-group">
+      <label class="text-light" for="id_new_password2">Confirm New Password:</label>
+      {{ form.new_password2 }}
+    </div>
+
+<button class="btn btn-primary btn-block p-3" type="submit">Save changes</button>
+      </form>
+
+      
+</div>
+
+
+
+    <!-- Reader Mode -->
+  
+    <div class="card-header text-light">
+      Reader Mode
+      </div>
+    <div class="card-body">
+<form action=" {% url "reader_mode" %} ">
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" name="reader_mode" class="custom-control-input" onclick="this.form.submit()" id="id_reader_mode" checked>
+      <label class="custom-control-label text-light" for="id_reader_mode">Enable/Disable</label>
+      </div> 
+</form>
+</div>
+
+
+    <!-- Multifactor Authentication -->
+    <div class="card-header text-light">
+      Multifactor Authentication
+      </div>
+      <div class="card-body text-light">
+      {% if user.custom_user.multifactor %}
+      ON
+      {% else %}
+      <i class="text-muted">Feature will be enabled in GELMS v3</i>
       {% endif %}
     </div>
 
   </div>
 
+  {% endif %}
 
 </div>
 </div>

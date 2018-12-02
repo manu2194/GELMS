@@ -1,9 +1,14 @@
 {% extends 'base_dash.html' %}
 {% block title %}Course{% endblock %}
 {% block content_dash %}
-
+{% if user.custom_user.reader_mode == False%}
   <div class="mb-2" style="margin-top:56px">
+  
     <nav class="navbar bg-purple-dark navbar-expand-sm navbar-dark shadow">
+  {% else %}
+  <div class="mb-2" style="margin-top:70px">
+  <nav class="navbar bg-black navbar-expand-sm navbar-dark shadow">
+  {% endif %}
     <span class="navbar-text ml-2">
     <strong class=>{{course.name}}</strong>({{course.title}})<text class="ml-2">|</text>
      </span>

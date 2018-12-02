@@ -5,6 +5,7 @@ from courses.models import Course
 from .forms import ToolForm
 from .models import Tool
 
+
 # Create your views here.
 class ToolsView(generic.View):
 
@@ -38,4 +39,5 @@ class ToolsView(generic.View):
                 return True
             return False
 
+        form.fields['status'].widget.attrs = {'class':'custom-control-input','onclick':'this.form.submit()'}
         return render(request, 'tools.html', {'course': course, 'form':form, 'user_is_registered':user_is_registered})

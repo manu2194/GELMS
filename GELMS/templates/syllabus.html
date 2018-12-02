@@ -11,11 +11,11 @@
 
 
 <!-- Page Heading -->
+{% if user.custom_user.reader_mode == False %}
 <div class="card">
   <div class="card-header">
     <h3 class="mt-2 ml-2">Syllabus for {{course.name}}</h3>
   </div>
-
 
 <!-- Display Syllabus -->
   <div class="card-body">
@@ -55,20 +55,89 @@
       </div>
       <div class="card-body">
       <form class="ml-2" method="POST">
-        <div class="input-group">
+        <div class="form-group">
+        <label for="id_content" class="text-dark">
+        Content:
+        </label>
         {{form.content}}
+        <label for="id_due_date" class="text-dark">
+        Due Date:
+        </label>
         {{form.due_date}}
-          <div class="input-group-append">
-          </div>
-          <div class="input-group-append">
-            <button class="btn btn-primary" type="submit">Submit</button>
-          </div>
         </div>
+
+            <button class="btn btn-primary pr-5 pl-5" type="submit">Submit</button>
+
+        
       </form>
     </div>
   {% endif %}
 </div>
 
+{% else %}
+<div class="card bg-dark">
+  <div class="card-header">
+    <h2 class="mt-2 ml-2 text-light">Syllabus for {{course.name}}</h2>
+  </div>
+
+<!-- Display Syllabus -->
+  <div class="card-body">
+  {% if course.course_syllabus.all%}
+    <table class="table table-dark shadow">
+      <thead class="thead-dark">
+        <tr>
+          <th scope = "col md-2">Content</th>
+          <th scope = "col md-6">Date</th>
+          {% if user.custom_user.status == 'Teacher'%}
+          <th scope = "col md-2">Actions</th>
+          {% endif %}
+        </tr>
+      </thead>
+      </tbody>
+        {% for syllabus in course.get_syllabus%}
+          <tr>
+            <td>{{syllabus.content}}</td>
+            <td>{{syllabus.due_date}}</td>
+            {% if user.custom_user.status == 'Teacher'%}
+            <td><a href="{% url 'syllabus_edit' course.name syllabus.id %}" class="text-primary mr-2">Edit</a>|<a href="{% url 'syllabus_delete' course.name syllabus.id %}" class="text-danger ml-2">Delete</a>
+            {% endif %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <text class="text-danger ml-2">NO SYLLABUS FOUND</text>
+  {% endif %}
+  </div>
+
+
+<!-- Add Syllabus -->
+  {% if user.custom_user.status == 'Teacher'%}
+    <div class="card-header text-light">
+      Add new syllabus item:
+      </div>
+      <div class="card-body">
+      <form class="ml-2" method="POST">
+        <div class="form-group">
+        <label for="id_content">
+        Content:
+        </label>
+        {{form.content}}
+        <label for="id_due_date">
+        Due Date:
+        </label>
+        {{form.due_date}}
+        </div>
+
+            <button class="btn btn-primary pr-5 pl-5" type="submit">Submit</button>
+
+        
+      </form>
+    </div>
+  {% endif %}
+</div>
+
+{% endif %}
 
 <!-- DatePicker Script -->
 
