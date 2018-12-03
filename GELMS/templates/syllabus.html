@@ -20,7 +20,8 @@
 <!-- Display Syllabus -->
   <div class="card-body">
   {% if course.course_syllabus.all%}
-    <table class="table table-ho table-bordered shadow">
+  <div class="table-responsive">
+    <table class="table table-hover table-bordered shadow">
       <thead class="thead-light">
         <tr>
           <th scope = "col md-2">Content</th>
@@ -42,6 +43,7 @@
         {% endfor %}
       </tbody>
     </table>
+    </div>
   {% else %}
     <text class="text-danger ml-2">NO SYLLABUS FOUND</text>
   {% endif %}
@@ -83,6 +85,7 @@
 <!-- Display Syllabus -->
   <div class="card-body">
   {% if course.course_syllabus.all%}
+  <div class="table-responsive">
     <table class="table table-dark shadow">
       <thead class="thead-dark">
         <tr>
@@ -105,6 +108,7 @@
         {% endfor %}
       </tbody>
     </table>
+    </div>
   {% else %}
     <text class="text-danger ml-2">NO SYLLABUS FOUND</text>
   {% endif %}
