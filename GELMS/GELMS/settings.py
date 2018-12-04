@@ -25,7 +25,8 @@ SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*']  #comment this line out and uncomment the line below to deploy website.
+#ALLOWED_HOSTS = ['gelms.pythonanywhere.com']
 
 
 # Application definition
@@ -125,6 +126,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 STATIC_URL = '/static/'
+#STATIC_ROOT = '/home/Gelms/GELMS/GELMS/static'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
