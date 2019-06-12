@@ -31,4 +31,4 @@ divided up by the different users for clarity:
 ## Implementation
 The backend is powered by the MVC framwork, Django written in Python.
 ## Working Prototype
-This project is meant to be a prototype of a learning management system and is result of applying software design principles and full-stack development skills for a practical example. The working/hosted project is hosted on the cloud service [*pythonanywhere*](gelms.pythonanywhere.com).
+This project is meant to be a prototype of a learning management system and is a result of applying software design principles and full-stack development skills for a practical example. The working/hosted project is hosted on the cloud service [*pythonanywhere*](gelms.pythonanywhere.com).
